@@ -57,3 +57,7 @@ sysinfo.txt
 
 # Crashlytics generated file
 crashlytics-build.properties
+
+# Large assets
+Assets/Procedural Worlds/Gaia/Asset Samples/NatureManufacture/Arrays/CTS_Profile_180424-1317_Normals.asset
+Assets/Procedural Worlds/Gaia/Asset Samples/NatureManufacture/Arrays/CTS_Profile_180424-1317_Albedos.asset

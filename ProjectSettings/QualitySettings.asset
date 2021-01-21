@@ -87,7 +87,7 @@ QualitySettings:
     shadowResolution: 1
     shadowProjection: 1
     shadowCascades: 2
-    shadowDistance: 40
+    shadowDistance: 512
     shadowNearPlaneOffset: 3
     shadowCascade2Split: 0.33333334
     shadowCascade4Split: {x: 0.06666667, y: 0.2, z: 0.46666667}
@@ -101,7 +101,7 @@ QualitySettings:
     realtimeReflectionProbes: 1
     billboardsFaceCameraPosition: 1
     vSyncCount: 1
-    lodBias: 1
+    lodBias: 2
     maximumLODLevel: 0
     streamingMipmapsActive: 0
     streamingMipmapsAddAllCameras: 1
@@ -114,7 +114,7 @@ QualitySettings:
     asyncUploadBufferSize: 16
     asyncUploadPersistentBuffer: 1
     resolutionScalingFixedDPIFactor: 1
-    customRenderPipeline: {fileID: 11400000, guid: 19ba41d7c0026c3459d37c2fe90c55a0,
+    customRenderPipeline: {fileID: 11400000, guid: 85b3d31930e0fed41a61dc7c102bda5e,
       type: 2}
     excludedTargetPlatforms: []
   m_PerPlatformDefaultQuality:
