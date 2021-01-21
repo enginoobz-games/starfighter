@@ -55,6 +55,29 @@ MonoBehaviour:
     sessionPlaybackState: 1
     m_terrainsFoldedOut: 0
     m_serializedExternalAction: 
+  - m_description: Spawning - Gaia Pro Sample-Texture(Clone)
+    m_operationType: 7
+    m_isActive: 1
+    m_affectedTerrainNames: []
+    m_operationDateTime: 1/21/2021 12:57:09 PM
+    scriptableObjectAssetGUID: b86c63f874aa7c5409246f90a364b47d
+    m_isFoldedOut: 0
+    sessionPlaybackState: 1
+    m_terrainsFoldedOut: 0
+    m_serializedExternalAction: 
+  - m_description: Spawning - Gaia Pro Sample-Texture(Clone)
+    m_operationType: 7
+    m_isActive: 1
+    m_affectedTerrainNames:
+    - Terrain_2_0-20210121 - 101925
+    - Terrain_3_0-20210121 - 101925
+    - Terrain_4_0-20210121 - 101925
+    m_operationDateTime: 1/21/2021 12:58:29 PM
+    scriptableObjectAssetGUID: dffb2939dff818d4d9d4837252b7fd39
+    m_isFoldedOut: 0
+    sessionPlaybackState: 1
+    m_terrainsFoldedOut: 0
+    m_serializedExternalAction: 
   m_terrainMinMaxCache:
   - guid: 02dafd5b3d505a14893aff43a2991430
     isWorldmap: 0
@@ -81,40 +104,5 @@ MonoBehaviour:
     recalculate: 0
     min: 0
     max: 153.75235
-  m_bakedMaskCacheEntries:
-  - fileName: Terrain_4_0-20210121 - 101925_Tag_PW - Building_12
-    assetPath: Assets/Procedural Worlds/Gaia/TerrainCollisionData/Terrain_4_0-20210121
-      - 101925/Terrain_4_0-20210121 - 101925_Tag_PW - Building_12
-    fullPath: C:/Users/Administrator/projects/unity/starfighter/Assets/Procedural
-      Worlds/Gaia/TerrainCollisionData/Terrain_4_0-20210121 - 101925/Terrain_4_0-20210121
-      - 101925_Tag_PW - Building_12
-    texture: {fileID: 0}
-  - fileName: Terrain_4_0-20210121 - 101925_Tag_PW - Prop_1.19
-    assetPath: Assets/Procedural Worlds/Gaia/TerrainCollisionData/Terrain_4_0-20210121
-      - 101925/Terrain_4_0-20210121 - 101925_Tag_PW - Prop_1.19
-    fullPath: C:/Users/Administrator/projects/unity/starfighter/Assets/Procedural
-      Worlds/Gaia/TerrainCollisionData/Terrain_4_0-20210121 - 101925/Terrain_4_0-20210121
-      - 101925_Tag_PW - Prop_1.19
-    texture: {fileID: 0}
-  - fileName: Terrain_4_0-20210121 - 101925_Tag_PW - Building_10
-    assetPath: Assets/Procedural Worlds/Gaia/TerrainCollisionData/Terrain_4_0-20210121
-      - 101925/Terrain_4_0-20210121 - 101925_Tag_PW - Building_10
-    fullPath: C:/Users/Administrator/projects/unity/starfighter/Assets/Procedural
-      Worlds/Gaia/TerrainCollisionData/Terrain_4_0-20210121 - 101925/Terrain_4_0-20210121
-      - 101925_Tag_PW - Building_10
-    texture: {fileID: 0}
-  - fileName: Terrain_4_0-20210121 - 101925_Tag_PW - Prop_3
-    assetPath: Assets/Procedural Worlds/Gaia/TerrainCollisionData/Terrain_4_0-20210121
-      - 101925/Terrain_4_0-20210121 - 101925_Tag_PW - Prop_3
-    fullPath: C:/Users/Administrator/projects/unity/starfighter/Assets/Procedural
-      Worlds/Gaia/TerrainCollisionData/Terrain_4_0-20210121 - 101925/Terrain_4_0-20210121
-      - 101925_Tag_PW - Prop_3
-    texture: {fileID: 0}
-  - fileName: Terrain_4_0-20210121 - 101925_Tag_PW - Building_3.69
-    assetPath: Assets/Procedural Worlds/Gaia/TerrainCollisionData/Terrain_4_0-20210121
-      - 101925/Terrain_4_0-20210121 - 101925_Tag_PW - Building_3.69
-    fullPath: C:/Users/Administrator/projects/unity/starfighter/Assets/Procedural
-      Worlds/Gaia/TerrainCollisionData/Terrain_4_0-20210121 - 101925/Terrain_4_0-20210121
-      - 101925_Tag_PW - Building_3.69
-    texture: {fileID: 0}
+  m_bakedMaskCacheEntries: []
   m_worldBiomeMaskSettings: {fileID: 0}
