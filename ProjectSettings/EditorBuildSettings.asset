@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/TestTerran.unity
+    guid: a2bbaa111d298564b82a37e2766d170c
+  - enabled: 1
     path: Assets/Scenes/Sandbox-Harry.unity
     guid: a8f4f99718679da4fa7ad8f525581ff7
   - enabled: 1
