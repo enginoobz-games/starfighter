@@ -128,7 +128,7 @@ Material:
     - _AmbientColor: {r: 0.5840786, g: 0.49693304, b: 0.60382754, a: 1}
     - _Color: {r: 1, g: 0, b: 0, a: 0}
     - _ColorDeepWater: {r: 1, g: 1, b: 1, a: 1}
-    - _EdgeWaterColor: {r: 0.09999979, g: 0.09999979, b: 0.19999978, a: 1}
+    - _EdgeWaterColor: {r: 0.09999972, g: 0.09999972, b: 0.19999972, a: 1}
     - _MainLightColor: {r: 1.4, g: 1.1586648, b: 0.9971636, a: 1.4}
     - _MainLightDir: {r: -0, g: 0.70710677, b: 0.7071067, a: 0}
     - _MainLightFresnel: {r: 0.052643288, g: 0.0726428, b: 0.122641504, a: 1}

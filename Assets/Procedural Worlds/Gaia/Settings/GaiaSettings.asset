@@ -19,7 +19,7 @@ MonoBehaviour:
   m_currentEnvironment: 2
   m_currentRenderer: 2
   m_currentDefaults: {fileID: 11400000, guid: 54f4fac3c7f0a1e44a45853d26c87b49, type: 2}
-  m_tilesX: 7
+  m_tilesX: 4
   m_tilesZ: 1
   m_createTerrainScenes: 0
   m_unloadTerrainScenes: 0

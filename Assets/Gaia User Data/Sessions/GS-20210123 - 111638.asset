@@ -1,0 +1,78 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e251860fcd970734c9f14ebd98a146c3, type: 3}
+  m_Name: GS-20210123 - 111638
+  m_EditorClassIdentifier: 
+  m_name: Session 20210123-111638
+  m_description: 'Rocking out at Creativity Central!
+
+
+    If you like Gaia please
+    consider rating it :)'
+  m_previewImage: {fileID: 0}
+  m_dateCreated: 23/01/2021 11:16:38
+  m_terrainWidth: 512
+  m_terrainDepth: 150
+  m_terrainHeight: 512
+  m_seaLevel: 12.5
+  m_spawnDensity: 0.8
+  m_isLocked: 0
+  m_previewImageBytes: 
+  m_previewImageWidth: 0
+  m_previewImageHeight: 0
+  m_operations:
+  - m_description: 'Creating World: 4 x 1 tiles, tile size: 512'
+    m_operationType: 0
+    m_isActive: 1
+    m_affectedTerrainNames: []
+    m_operationDateTime: 23/01/2021 11:16:38
+    scriptableObjectAssetGUID: 81f0dceac9832ff40bb5f2affbc97583
+    m_isFoldedOut: 0
+    sessionPlaybackState: 1
+    m_terrainsFoldedOut: 0
+    m_serializedExternalAction: 
+  - m_description: Spawning - Multiple Spawners (7)
+    m_operationType: 7
+    m_isActive: 1
+    m_affectedTerrainNames:
+    - Terrain_0_0-20210123 - 111638
+    - Terrain_1_0-20210123 - 111638
+    - Terrain_0_0-20210123 - 111638 (1)
+    m_operationDateTime: 23/01/2021 11:38:22
+    scriptableObjectAssetGUID: ac1d28142d3432848a644793794bb906
+    m_isFoldedOut: 0
+    sessionPlaybackState: 1
+    m_terrainsFoldedOut: 0
+    m_serializedExternalAction: 
+  m_terrainMinMaxCache:
+  - guid: d231fa714c108d54499a3d46f571831a
+    isWorldmap: 0
+    recalculate: 0
+    min: 0
+    max: 84.728775
+  - guid: 5cbb929505c8790448d5d884f0fba1c0
+    isWorldmap: 0
+    recalculate: 0
+    min: 0
+    max: 0
+  - guid: e30031da4e50a044ab9a345828b87ba7
+    isWorldmap: 0
+    recalculate: 0
+    min: 0
+    max: 0
+  - guid: 43a46b0f22737674497e70d896c03701
+    isWorldmap: 0
+    recalculate: 0
+    min: 0
+    max: 0
+  m_bakedMaskCacheEntries: []
+  m_worldBiomeMaskSettings: {fileID: 0}
