@@ -29,16 +29,33 @@ public class HealthSystem : MonoBehaviour
 
     }
 
-    private void OnTriggerEnter(Collider other)
+    // private void OnTriggerEnter(Collider other)
+    // {
+    //     StartCoroutine(nameof(getDamaged));
+
+    //     switch (other.gameObject.tag)
+    //     {
+    //         case "Mine":
+    //             Destroy(other.gameObject);
+    //             // if (vfxManager)
+    //                 vfxManager.playExplosionFx(other.transform.position);
+    //             break;
+    //     }
+    // }
+
+    private void OnCollisionEnter(Collision collision)
     {
         StartCoroutine(nameof(getDamaged));
 
+        ContactPoint contact = collision.contacts[0];
+        vfxManager.playExplosionFx(contact.point);
+
+        GameObject other = collision.gameObject;
         switch (other.gameObject.tag)
         {
             case "Mine":
                 Destroy(other.gameObject);
-                // if (vfxManager)
-                    vfxManager.playExplosionFx(other.transform.position);
+                vfxManager.playExplosionFx(other.transform.position);
                 break;
         }
     }
