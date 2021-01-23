@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
+//TODO: CHeck and add Collider & Rigidbody in runtime
 [RequireComponent(typeof(Collider), typeof(Rigidbody))]
 public class HealthSystem : MonoBehaviour
 {
@@ -10,6 +11,7 @@ public class HealthSystem : MonoBehaviour
     [SerializeField] float maxHealth = 10;
     [SerializeField] TextMeshProUGUI label;
     [SerializeField] GameObject damagingVfx;
+    VfxManager vfxManager;
 
     float currentHealth;
     Collider theCollider;
@@ -17,6 +19,7 @@ public class HealthSystem : MonoBehaviour
     void Start()
     {
         theCollider = GetComponent<MeshCollider>();
+        vfxManager = FindObjectOfType<VfxManager>();
         currentHealth = maxHealth;
         updateLabel();
     }
@@ -27,14 +30,20 @@ public class HealthSystem : MonoBehaviour
 
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnCollisionEnter(Collision collision)
     {
         StartCoroutine(nameof(getDamaged));
 
+        ContactPoint contact = collision.contacts[0];
+        vfxManager.playExplosionFx(contact.point, 0.5f);
+
+        GameObject other = collision.gameObject;
         switch (other.gameObject.tag)
         {
             case "Mine":
+            case "Enemy":
                 Destroy(other.gameObject);
+                vfxManager.playExplosionFx(other.transform.position, 1f);
                 break;
         }
     }
