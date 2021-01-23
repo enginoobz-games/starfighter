@@ -168,7 +168,7 @@ ParticleSystem:
     startSpeed:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 3000
+      scalar: 2000
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -3727,14 +3727,14 @@ ParticleSystem:
         m_PreInfinity: 2
         m_PostInfinity: 2
         m_RotationOrder: 4
-    minKillSpeed: 0
-    maxKillSpeed: 10000
+    minKillSpeed: 2000
+    maxKillSpeed: 9000
     radiusScale: 1
     collidesWith:
       serializedVersion: 2
       m_Bits: 4294967295
     maxCollisionShapes: 256
-    quality: 0
+    quality: 1
     voxelSize: 0.5
     collisionMessages: 1
     collidesWithDynamic: 1
