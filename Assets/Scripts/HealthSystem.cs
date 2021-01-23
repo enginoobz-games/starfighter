@@ -35,14 +35,15 @@ public class HealthSystem : MonoBehaviour
         StartCoroutine(nameof(getDamaged));
 
         ContactPoint contact = collision.contacts[0];
-        vfxManager.playExplosionFx(contact.point);
+        vfxManager.playExplosionFx(contact.point, 0.5f);
 
         GameObject other = collision.gameObject;
         switch (other.gameObject.tag)
         {
             case "Mine":
+            case "Enemy":
                 Destroy(other.gameObject);
-                vfxManager.playExplosionFx(other.transform.position);
+                vfxManager.playExplosionFx(other.transform.position, 1f);
                 break;
         }
     }

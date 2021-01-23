@@ -11,6 +11,7 @@ TagManager:
   - Synty Small Farm
   - PW - Nature
   - Mine
+  - Enemy
   layers:
   - Default
   - TransparentFX
