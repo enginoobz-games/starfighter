@@ -10,6 +10,7 @@ public class HealthSystem : MonoBehaviour
     [SerializeField] float maxHealth = 10;
     [SerializeField] TextMeshProUGUI label;
     [SerializeField] GameObject damagingVfx;
+
     float currentHealth;
     Collider theCollider;
     // Start is called before the first frame update
@@ -29,6 +30,13 @@ public class HealthSystem : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         StartCoroutine(nameof(getDamaged));
+
+        switch (other.gameObject.tag)
+        {
+            case "Mine":
+                Destroy(other.gameObject);
+                break;
+        }
     }
 
     IEnumerator getDamaged()
