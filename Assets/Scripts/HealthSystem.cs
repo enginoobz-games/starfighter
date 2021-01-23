@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
+//TODO: CHeck and add Collider & Rigidbody in runtime
 [RequireComponent(typeof(Collider), typeof(Rigidbody))]
 public class HealthSystem : MonoBehaviour
 {
@@ -28,20 +29,6 @@ public class HealthSystem : MonoBehaviour
     {
 
     }
-
-    // private void OnTriggerEnter(Collider other)
-    // {
-    //     StartCoroutine(nameof(getDamaged));
-
-    //     switch (other.gameObject.tag)
-    //     {
-    //         case "Mine":
-    //             Destroy(other.gameObject);
-    //             // if (vfxManager)
-    //                 vfxManager.playExplosionFx(other.transform.position);
-    //             break;
-    //     }
-    // }
 
     private void OnCollisionEnter(Collision collision)
     {
