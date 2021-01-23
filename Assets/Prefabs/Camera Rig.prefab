@@ -519,6 +519,7 @@ Transform:
   - {fileID: 4516847762795912}
   - {fileID: 4516849063077958}
   - {fileID: 778181966}
+  - {fileID: 5941672121309082667}
   m_Father: {fileID: 574387413613410120}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -587,6 +588,7 @@ MonoBehaviour:
   immuneDuration: 2
   maxHealth: 10
   label: {fileID: 479573554}
+  damagingVfx: {fileID: 5941672121309082664}
 --- !u!1001 &306153819
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1064,4 +1066,90 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1819210613620524, guid: 206dc24d514cdd146a07be8e731a56e9,
     type: 3}
   m_PrefabInstance: {fileID: 574387413261075884}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &574387414120263375
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 574387414435708414}
+    m_Modifications:
+    - target: {fileID: 6164773814475414244, guid: 7f1ca971b4a00564fa3882238f7845c5,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 6164773814475414244, guid: 7f1ca971b4a00564fa3882238f7845c5,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6164773814475414244, guid: 7f1ca971b4a00564fa3882238f7845c5,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6164773814475414244, guid: 7f1ca971b4a00564fa3882238f7845c5,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 31
+      objectReference: {fileID: 0}
+    - target: {fileID: 6164773814475414244, guid: 7f1ca971b4a00564fa3882238f7845c5,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6164773814475414244, guid: 7f1ca971b4a00564fa3882238f7845c5,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6164773814475414244, guid: 7f1ca971b4a00564fa3882238f7845c5,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6164773814475414244, guid: 7f1ca971b4a00564fa3882238f7845c5,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6164773814475414244, guid: 7f1ca971b4a00564fa3882238f7845c5,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6164773814475414244, guid: 7f1ca971b4a00564fa3882238f7845c5,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6164773814475414244, guid: 7f1ca971b4a00564fa3882238f7845c5,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6164773814475414247, guid: 7f1ca971b4a00564fa3882238f7845c5,
+        type: 3}
+      propertyPath: m_Name
+      value: Damaging VFX
+      objectReference: {fileID: 0}
+    - target: {fileID: 6164773814475414247, guid: 7f1ca971b4a00564fa3882238f7845c5,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 7f1ca971b4a00564fa3882238f7845c5, type: 3}
+--- !u!1 &5941672121309082664 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6164773814475414247, guid: 7f1ca971b4a00564fa3882238f7845c5,
+    type: 3}
+  m_PrefabInstance: {fileID: 574387414120263375}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &5941672121309082667 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6164773814475414244, guid: 7f1ca971b4a00564fa3882238f7845c5,
+    type: 3}
+  m_PrefabInstance: {fileID: 574387414120263375}
   m_PrefabAsset: {fileID: 0}

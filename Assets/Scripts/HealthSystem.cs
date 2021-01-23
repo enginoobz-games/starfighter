@@ -9,6 +9,7 @@ public class HealthSystem : MonoBehaviour
     [SerializeField] float immuneDuration = 2;
     [SerializeField] float maxHealth = 10;
     [SerializeField] TextMeshProUGUI label;
+    [SerializeField] GameObject damagingVfx;
     float currentHealth;
     Collider theCollider;
     // Start is called before the first frame update
@@ -34,10 +35,12 @@ public class HealthSystem : MonoBehaviour
     {
         currentHealth--;
         updateLabel();
-
         theCollider.enabled = false;
+        damagingVfx.SetActive(true);
+
         yield return new WaitForSeconds(immuneDuration);
         theCollider.enabled = true;
+        damagingVfx.SetActive(false);
     }
 
     private void updateLabel()

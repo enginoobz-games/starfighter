@@ -8,9 +8,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Sandbox Harry/Test Export.unity
     guid: b51e864ba544e414c81535a77cc02567
-  - enabled: 1
+  - enabled: 0
     path: 
-    guid: a2bbaa111d298564b82a37e2766d170c
+    guid: 00000000000000000000000000000000
   - enabled: 1
     path: Assets/Scenes/Sandbox Harry/Sandbox-Harry.unity
     guid: a8f4f99718679da4fa7ad8f525581ff7
