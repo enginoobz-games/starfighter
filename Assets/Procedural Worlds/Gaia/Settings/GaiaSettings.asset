@@ -19,7 +19,7 @@ MonoBehaviour:
   m_currentEnvironment: 2
   m_currentRenderer: 2
   m_currentDefaults: {fileID: 11400000, guid: 54f4fac3c7f0a1e44a45853d26c87b49, type: 2}
-  m_tilesX: 6
+  m_tilesX: 7
   m_tilesZ: 1
   m_createTerrainScenes: 0
   m_unloadTerrainScenes: 0
@@ -40,16 +40,16 @@ MonoBehaviour:
   m_terrainUnloadMemoryTreshold: 4294967296
   m_worldmapLayer: {fileID: 8574412962073106934, guid: 957ef5b80c80fde429be14ca5eeed1ae,
     type: 2}
-  m_enableAmbientAudio: 1
+  m_enableAmbientAudio: 0
   m_enablePostProcessing: 1
   m_enableLocationManager: 1
   m_currentPostFX: 0
   m_currentWater: 0
   m_currentWaterPro: 1
   m_enableUnderwaterEffects: 1
-  m_createWind: 1
+  m_createWind: 0
   m_windType: 0
-  m_createScreenShotter: 1
+  m_createScreenShotter: 0
   m_focusPlayerOnSetup: 0
   m_FPFDefaultThreshold: 5000
   m_XRControllerPackageName: GaiaXRController.unitypackage
