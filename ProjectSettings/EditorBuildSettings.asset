@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/Sandbox Davronbek/D1.unity
+    guid: f7d240c946b93fd4aaddd6bbc009aeb8
+  - enabled: 1
     path: Assets/sandbox1.unity
     guid: 24a3d83418c69484195332e3397a9866
   - enabled: 1
