@@ -62,6 +62,6 @@ public class HealthSystem : MonoBehaviour
 
     private void updateLabel()
     {
-        label.text = "Health " + currentHealth + "/" + maxHealth;
+        label.text = "Health\n" + currentHealth + "/" + maxHealth;
     }
 }

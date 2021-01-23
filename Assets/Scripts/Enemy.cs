@@ -60,6 +60,7 @@ public class Enemy : MonoBehaviour
         // scoreLabel.UpdateOnEnemyDestroyed(scoreOnDestroy);
         // GameObject explosion = Instantiate(explosionFX, transform.position, Quaternion.identity);
         // Destroy(explosion, 1.5f);
+        GameUI.Instance.UpdateScore(scoreOnDestroy);
         vfxManager.playExplosionFx(transform.position, 10f);
         Destroy(gameObject);
     }

@@ -93,4 +93,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 5
-  scoreOnDestroy: 0
+  scoreOnDestroy: 10
