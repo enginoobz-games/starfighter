@@ -10,6 +10,7 @@ public class HealthSystem : MonoBehaviour
     [SerializeField] float maxHealth = 10;
     [SerializeField] TextMeshProUGUI label;
     [SerializeField] GameObject damagingVfx;
+    VfxManager vfxManager;
 
     float currentHealth;
     Collider theCollider;
@@ -17,6 +18,7 @@ public class HealthSystem : MonoBehaviour
     void Start()
     {
         theCollider = GetComponent<MeshCollider>();
+        vfxManager = FindObjectOfType<VfxManager>();
         currentHealth = maxHealth;
         updateLabel();
     }
@@ -35,6 +37,8 @@ public class HealthSystem : MonoBehaviour
         {
             case "Mine":
                 Destroy(other.gameObject);
+                // if (vfxManager)
+                    vfxManager.playExplosionFx(other.transform.position);
                 break;
         }
     }
