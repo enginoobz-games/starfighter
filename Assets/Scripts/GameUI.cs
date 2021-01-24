@@ -5,7 +5,8 @@ using TMPro;
 
 public class GameUI : MonoBehaviour
 {
-    [SerializeField] TextMeshProUGUI scoreLabel;
+    [SerializeField] TextMeshProUGUI cointLabel;
+    [SerializeField] TextMeshProUGUI distanceLabel;
     int score = 0;
     // Start is called before the first frame update
 
@@ -24,9 +25,14 @@ public class GameUI : MonoBehaviour
         }
     }
 
-    public void UpdateScore(int amount)
+    public void UpdateCoint(int amount)
     {
         score += amount;
-        scoreLabel.text = "Score\n" + score;
+        cointLabel.text = "Coints\n" + score;
+    }
+
+    public void UpdateDistance(float dis)
+    {
+        distanceLabel.text = "Distance\n" + dis + " m";
     }
 }

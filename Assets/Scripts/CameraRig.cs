@@ -19,6 +19,7 @@ public class CameraRig : MonoBehaviour
         terrainSize = terrainSpawner.terrainSize;
         moveSpeed = terrainSize / timeTravelPerTile;
         maxSpeed = terrainSize / minTimeTravelPerTile;
+        StartCoroutine(UpdateDistanceLabel(1f));
     }
 
     void FixedUpdate()
@@ -42,5 +43,14 @@ public class CameraRig : MonoBehaviour
     public float posToCoord(Vector3 pos)
     {
         return (pos.x - terrainSize / 2) / terrainSize;
+    }
+
+    IEnumerator UpdateDistanceLabel(float repeatRate)
+    {
+        while (true)
+        {
+            GameUI.Instance.UpdateDistance(Mathf.Round(transform.position.x));
+            yield return new WaitForSeconds(repeatRate);
+        }
     }
 }

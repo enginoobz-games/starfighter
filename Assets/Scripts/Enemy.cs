@@ -7,7 +7,7 @@ public class Enemy : MonoBehaviour
     // [SerializeField] GameObject explosionFX;
     // [SerializeField] GameObject damageFX;
     [SerializeField] int health = 5;
-    [SerializeField] int scoreOnDestroy;
+    [SerializeField] int coinOnDestroy;
 
     // ScoreLabel scoreLabel;
     VfxManager vfxManager;
@@ -60,7 +60,7 @@ public class Enemy : MonoBehaviour
         // scoreLabel.UpdateOnEnemyDestroyed(scoreOnDestroy);
         // GameObject explosion = Instantiate(explosionFX, transform.position, Quaternion.identity);
         // Destroy(explosion, 1.5f);
-        GameUI.Instance.UpdateScore(scoreOnDestroy);
+        GameUI.Instance.UpdateCoint(coinOnDestroy);
         vfxManager.playExplosionFx(transform.position, 10f);
         Destroy(gameObject);
     }
