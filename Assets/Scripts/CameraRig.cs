@@ -5,16 +5,20 @@ using UnityEngine;
 public class CameraRig : MonoBehaviour
 {
     [SerializeField] float timeTravelPerTile = 10f;
+    [SerializeField] float accelerate = 0.018f;
+    [SerializeField] float minTimeTravelPerTile = 3f;
     TerrainSpawner terrainSpawner;
     float currentCoord;
     int nextCoord = 0;
     float moveSpeed;
+    float maxSpeed;
     float terrainSize;
     void Start()
     {
         terrainSpawner = FindObjectOfType<TerrainSpawner>();
         terrainSize = terrainSpawner.terrainSize;
-        moveSpeed = terrainSpawner.terrainSize / timeTravelPerTile;
+        moveSpeed = terrainSize / timeTravelPerTile;
+        maxSpeed = terrainSize / minTimeTravelPerTile;
     }
 
     void FixedUpdate()
@@ -27,6 +31,11 @@ public class CameraRig : MonoBehaviour
         {
             nextCoord++;
             terrainSpawner.SpawnOnCoord((int)Mathf.Floor(currentCoord) + 1); // spawn 1 tile ahead
+        }
+
+        if (accelerate != 0f && moveSpeed <= maxSpeed)
+        {
+            moveSpeed += accelerate;
         }
     }
 

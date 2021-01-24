@@ -70,12 +70,12 @@ MonoBehaviour:
   m_AdvancedMode: 0
   temperature:
     m_OverrideState: 1
-    m_Value: 20
+    m_Value: 0
     min: -100
     max: 100
   tint:
     m_OverrideState: 1
-    m_Value: 20
+    m_Value: 40
     min: -100
     max: 100
 --- !u!114 &-1810686304675309265
@@ -127,10 +127,10 @@ MonoBehaviour:
     m_Value: {x: 1, y: 1, z: 1, w: 0}
   gamma:
     m_OverrideState: 1
-    m_Value: {x: 1, y: 1, z: 1, w: -0.103256665}
+    m_Value: {x: 1, y: 1, z: 1, w: -0.18268478}
   gain:
     m_OverrideState: 1
-    m_Value: {x: 1, y: 1, z: 1, w: 0.11914215}
+    m_Value: {x: 1, y: 1, z: 1, w: 0.039714053}
 --- !u!114 &-914117920517921920
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -397,7 +397,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d7fd9488000d3734a9e00ee676215985, type: 3}
-  m_Name: D1 Gaia Default Evening Post Processing URP Profile
+  m_Name: D1 Test TerrainSpawner Gaia Default Morning Post Processing URP Profile
   m_EditorClassIdentifier: 
   components:
   - {fileID: 2440378501968973489}
@@ -551,7 +551,7 @@ MonoBehaviour:
     m_Value: {x: 0.5, y: 0.5}
   intensity:
     m_OverrideState: 1
-    m_Value: 0.296
+    m_Value: 0.3
     min: 0
     max: 1
   smoothness:
@@ -578,10 +578,10 @@ MonoBehaviour:
   m_AdvancedMode: 0
   postExposure:
     m_OverrideState: 1
-    m_Value: 0.5
+    m_Value: 0.25
   contrast:
     m_OverrideState: 1
-    m_Value: 0
+    m_Value: 5
     min: -100
     max: 100
   colorFilter:
