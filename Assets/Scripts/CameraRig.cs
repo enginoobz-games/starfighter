@@ -26,7 +26,7 @@ public class CameraRig : MonoBehaviour
         if (nextCoord - Mathf.Floor(currentCoord) == 0)
         {
             nextCoord++;
-            terrainSpawner.SpawnOnCoord((int)Mathf.Floor(currentCoord));
+            terrainSpawner.SpawnOnCoord((int)Mathf.Floor(currentCoord) + 1); // spawn 1 tile ahead
         }
     }
 

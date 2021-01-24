@@ -315,6 +315,7 @@ GameObject:
   - component: {fileID: 574387413613410122}
   - component: {fileID: 574387413613410116}
   - component: {fileID: 574387413613410117}
+  - component: {fileID: 1256141982}
   m_Layer: 0
   m_Name: Camera Rig
   m_TagString: MainCamera
@@ -484,6 +485,19 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &1256141982
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 574387413613410127}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc02645559f0fc54094a331d4cf83e3b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timeTravelPerTile: 10
 --- !u!1 &574387414435708415
 GameObject:
   m_ObjectHideFlags: 0
