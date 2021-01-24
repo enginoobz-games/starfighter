@@ -7,6 +7,7 @@ public class CameraRig : MonoBehaviour
     [SerializeField] float timeTravelPerTile = 10f;
     TerrainSpawner terrainSpawner;
     float currentCoord;
+    int nextCoord = 0;
     float moveSpeed;
     float terrainSize;
     void Start()
@@ -20,9 +21,13 @@ public class CameraRig : MonoBehaviour
     {
         transform.Translate(Vector3.forward * Time.deltaTime * moveSpeed);
 
-        //TODO: Trigger (once) TerrainSpawner when just move in new tile
-        // currentCoord = posToCoord(transform.position);
-        // print(Mathf.Floor(currentCoord) - currentCoord);
+        currentCoord = posToCoord(transform.position); // start from -1 when xStart = 0
+        //trigger (once) TerrainSpawner when just move in next tile (nextCoord)
+        if (nextCoord - Mathf.Floor(currentCoord) == 0)
+        {
+            nextCoord++;
+            terrainSpawner.SpawnOnCoord((int)Mathf.Floor(currentCoord));
+        }
     }
 
     public float posToCoord(Vector3 pos)

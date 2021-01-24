@@ -11,7 +11,7 @@ public class TerrainSpawner : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        InvokeRepeating(nameof(TestSpawn), 10f, 10f);
+        // InvokeRepeating(nameof(TestSpawn), 10f, 10f);
     }
 
     // Update is called once per frame
