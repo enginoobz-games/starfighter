@@ -19,6 +19,7 @@ public class HealthSystem : MonoBehaviour
     float currentHealth;
     Collider theCollider;
     bool isImmune = false;
+    float shieldTimer = 0;
     // Start is called before the first frame update
     void Start()
     {
@@ -53,8 +54,13 @@ public class HealthSystem : MonoBehaviour
                 Destroy(other);
                 break;
             case "Shield":
-                StartCoroutine(GetShielded(other.GetComponent<Shield>().duration));
                 Destroy(other);
+                float duration = other.GetComponent<Shield>().duration;
+                // TODO: improve logic
+                if (shieldTimer == 0) // if not being shield, set timer & start counting down
+                    StartCoroutine(GetShielded(duration));
+                else // if being shield, just reset the timer
+                    shieldTimer = duration;
                 break;
             case "Shield Aura":
                 break;
@@ -66,14 +72,24 @@ public class HealthSystem : MonoBehaviour
         }
     }
 
-    IEnumerator GetShielded(float duration)
+    public IEnumerator GetShielded(float duration)
     {
         isImmune = true;
         shieldAura.SetShieldActive(true);
+        shieldTimer = duration;
 
-        yield return new WaitForSeconds(duration);
-        isImmune = false;
-        shieldAura.SetShieldActive(false);
+        while (shieldTimer > 0)
+        {
+            yield return new WaitForSeconds(1.0f);
+            shieldTimer--;
+            print(shieldTimer);
+
+            if (shieldTimer == 0)
+            {
+                isImmune = false;
+                shieldAura.SetShieldActive(false);
+            }
+        }
     }
 
     IEnumerator GetDamaged()
