@@ -12,7 +12,7 @@ public class HealthSystem : MonoBehaviour
     [SerializeField] float maxHealth = 10;
     [SerializeField] TextMeshProUGUI label;
     [SerializeField] FXVShield shieldAura;
-    [SerializeField] FXVShield damagedShieldAura;
+    [SerializeField] FXVShield damagedShieldAura; // TODO: set same mesh of ship model for this shield in runtime
 
     VfxManager vfxManager;
 
@@ -75,6 +75,7 @@ public class HealthSystem : MonoBehaviour
     public IEnumerator GetShielded(float duration)
     {
         isImmune = true;
+        shieldAura.shieldActivationSpeed = 1f;
         shieldAura.SetShieldActive(true);
         shieldTimer = duration;
 
@@ -86,6 +87,7 @@ public class HealthSystem : MonoBehaviour
             if (shieldTimer == 0)
             {
                 isImmune = false;
+                shieldAura.shieldActivationSpeed = 0.5f;
                 shieldAura.SetShieldActive(false);
             }
         }
@@ -96,10 +98,12 @@ public class HealthSystem : MonoBehaviour
         currentHealth--;
         UpdateLabel();
         isImmune = true;
+        damagedShieldAura.shieldActivationSpeed = 2f;
         damagedShieldAura.SetShieldActive(true);
 
         yield return new WaitForSeconds(immuneDuration);
         isImmune = false;
+        damagedShieldAura.shieldActivationSpeed = 1f;
         damagedShieldAura.SetShieldActive(false);
     }
 
