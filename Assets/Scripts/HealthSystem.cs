@@ -82,7 +82,6 @@ public class HealthSystem : MonoBehaviour
         {
             yield return new WaitForSeconds(1.0f);
             shieldTimer--;
-            print(shieldTimer);
 
             if (shieldTimer == 0)
             {
