@@ -29,7 +29,7 @@ public class HealthSystem : MonoBehaviour
         UpdateLabel();
         // startup shield
         damagedShieldAura.SetShieldActive(false);
-        StartCoroutine(GetShielded(5f));
+        StartCoroutine(GetShielded(3f));
     }
 
     // Update is called once per frame
@@ -65,9 +65,12 @@ public class HealthSystem : MonoBehaviour
             case "Shield Aura":
                 break;
             default: // TODO: for terrain
-                ContactPoint contact = collision.contacts[0];
-                vfxManager.playExplosionFx(contact.point, 0.5f);
-                if (!isImmune) StartCoroutine(nameof(GetDamaged));
+                if (!isImmune)
+                {
+                    ContactPoint contact = collision.contacts[0];
+                    vfxManager.playExplosionFx(contact.point, 0.5f);
+                    StartCoroutine(nameof(GetDamaged));
+                }
                 break;
         }
     }
@@ -98,7 +101,7 @@ public class HealthSystem : MonoBehaviour
         currentHealth--;
         UpdateLabel();
         isImmune = true;
-        damagedShieldAura.shieldActivationSpeed = 2f;
+        damagedShieldAura.shieldActivationSpeed = 3f;
         damagedShieldAura.SetShieldActive(true);
 
         yield return new WaitForSeconds(immuneDuration);
