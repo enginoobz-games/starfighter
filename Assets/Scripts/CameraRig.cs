@@ -10,9 +10,24 @@ public class CameraRig : MonoBehaviour
     TerrainSpawner terrainSpawner;
     float currentCoord;
     int nextCoord = 0;
-    float moveSpeed;
+    public float moveSpeed;
     float maxSpeed;
     float terrainSize;
+
+    // singleton pattern
+    private static CameraRig _instance;
+    public static CameraRig Instance { get { return _instance; } }
+    private void Awake()
+    {
+        if (_instance != null && _instance != this)
+        {
+            Destroy(this.gameObject);
+        }
+        else
+        {
+            _instance = this;
+        }
+    }
     void Start()
     {
         terrainSpawner = FindObjectOfType<TerrainSpawner>();

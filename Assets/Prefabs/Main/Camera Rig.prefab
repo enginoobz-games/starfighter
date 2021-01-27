@@ -92,7 +92,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 17953621}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.59, z: 40}
+  m_LocalPosition: {x: -0, y: 0.57, z: 41.94}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 574387414435708414}
@@ -131,7 +131,7 @@ MonoBehaviour:
   cameraShake: 1
   firePoint: {fileID: 17953621}
   cameras: {fileID: 574387413613410127}
-  angleOffset: {x: -10, y: 90, z: 0}
+  angleOffset: {x: -7, y: 90, z: 0}
   VFXs:
   - {fileID: 1170744857039610, guid: 1fcfcb93d7455e94bb4991c5ab289a41, type: 3}
   - {fileID: 1391574063814312, guid: 68a0ef4dcae9aa14687734d594059d40, type: 3}
@@ -410,8 +410,6 @@ GameObject:
   - component: {fileID: 574387413613410126}
   - component: {fileID: 574387413613410123}
   - component: {fileID: 574387413613410122}
-  - component: {fileID: 574387413613410116}
-  - component: {fileID: 574387413613410117}
   - component: {fileID: 1256141982}
   - component: {fileID: 518554694}
   m_Layer: 0
@@ -545,44 +543,6 @@ MonoBehaviour:
   m_bookmarkName: My New Location Name
   m_rename: 0
   m_savedName: 
---- !u!320 &574387413613410116
-PlayableDirector:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 574387413613410127}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_PlayableAsset: {fileID: 11400000, guid: 46b99add57e747d4dafd937cbec906d1, type: 2}
-  m_InitialState: 1
-  m_WrapMode: 2
-  m_DirectorUpdateMode: 1
-  m_InitialTime: 0
-  m_SceneBindings:
-  - key: {fileID: 3944956160798103884, guid: 46b99add57e747d4dafd937cbec906d1, type: 2}
-    value: {fileID: 574387413613410117}
-  m_ExposedReferences:
-    m_References: []
---- !u!95 &574387413613410117
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 574387413613410127}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &1256141982
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -596,8 +556,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timeTravelPerTile: 50
-  accelerate: 0.02
-  minTimeTravelPerTile: 3
+  accelerate: 0.3
+  minTimeTravelPerTile: 20
+  moveSpeed: 0
 --- !u!114 &518554694
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1379,6 +1340,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d71e4a38e82162741bbcd852c55f35a1, type: 3}
+--- !u!4 &2477241004069225278 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2477241002345492039, guid: d71e4a38e82162741bbcd852c55f35a1,
+    type: 3}
+  m_PrefabInstance: {fileID: 2034363769}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &2586857101160028806 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2586857099931088895, guid: d71e4a38e82162741bbcd852c55f35a1,
@@ -1391,12 +1358,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf46bbe9d7c89bf4a8f0de85a44e5f6d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!4 &2477241004069225278 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 2477241002345492039, guid: d71e4a38e82162741bbcd852c55f35a1,
-    type: 3}
-  m_PrefabInstance: {fileID: 2034363769}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &574387413261075884
 PrefabInstance:
   m_ObjectHideFlags: 0

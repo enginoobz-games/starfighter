@@ -7,7 +7,7 @@ public class GameUI : MonoBehaviour
 {
     [SerializeField] TextMeshProUGUI cointLabel;
     [SerializeField] TextMeshProUGUI distanceLabel;
-    int score = 0;
+    int coint = 0;
     // Start is called before the first frame update
 
     // singleton pattern
@@ -27,8 +27,8 @@ public class GameUI : MonoBehaviour
 
     public void UpdateCoint(int amount)
     {
-        score += amount;
-        cointLabel.text = "Coints\n" + score;
+        coint += amount;
+        cointLabel.text = "Coints\n" + coint;
     }
 
     public void UpdateDistance(float dis)
