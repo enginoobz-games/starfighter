@@ -35,7 +35,8 @@ public class HealthSystem : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        shieldAura.gameObject.transform.position = gameObject.transform.position;
+        shieldAura.gameObject.transform.localPosition = transform.position;
+        print(shieldAura.gameObject.transform.position);
     }
 
     private void OnCollisionEnter(Collision collision)
