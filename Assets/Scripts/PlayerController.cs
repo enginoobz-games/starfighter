@@ -32,7 +32,7 @@ public class PlayerController : MonoBehaviour
         {
             ProcessTranslation();
             ProcessRotation();
-            ProcessFiring();
+            // ProcessFiring();
         }
     }
 
