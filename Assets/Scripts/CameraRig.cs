@@ -19,7 +19,7 @@ public class CameraRig : MonoBehaviour
         terrainSize = terrainSpawner.terrainSize;
         moveSpeed = terrainSize / timeTravelPerTile;
         maxSpeed = terrainSize / minTimeTravelPerTile;
-        StartCoroutine(UpdateDistanceLabel(1f));
+        StartCoroutine(UpdateDistanceLabel(0.3f));
     }
 
     void FixedUpdate()
