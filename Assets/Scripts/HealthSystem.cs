@@ -11,6 +11,7 @@ public class HealthSystem : MonoBehaviour
     [SerializeField] float maxHealth = 10;
     [SerializeField] TextMeshProUGUI label;
     [SerializeField] GameObject damagingVfx;
+    [SerializeField] FXV.FXVShield shieldAura;
     VfxManager vfxManager;
 
     float currentHealth;
@@ -23,12 +24,14 @@ public class HealthSystem : MonoBehaviour
         vfxManager = FindObjectOfType<VfxManager>();
         currentHealth = maxHealth;
         UpdateLabel();
+        // startup shield
+        StartCoroutine(GetShielded(5f));
     }
 
     // Update is called once per frame
     void Update()
     {
-
+        shieldAura.gameObject.transform.position = gameObject.transform.position;
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -61,10 +64,11 @@ public class HealthSystem : MonoBehaviour
     IEnumerator GetShielded(float duration)
     {
         isImmune = true;
-        print(isImmune);
+        shieldAura.SetShieldActive(true);
 
         yield return new WaitForSeconds(duration);
         isImmune = false;
+        shieldAura.SetShieldActive(false);
     }
 
     IEnumerator GetDamaged()
