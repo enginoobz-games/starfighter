@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: PW_Tree_Spruce_01_Ending
+  m_Name: PW_Tree_Spruce_01_Ending 1
   m_Shader: {fileID: -6465566751694194690, guid: 896c4566c534d544085eac02e8d305d9,
     type: 3}
   m_ShaderKeywords: _PW_SF_COVER_ON _PW_SF_GLOBAL_CONTROL_ON
