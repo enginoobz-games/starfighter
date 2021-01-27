@@ -15,8 +15,8 @@ GameObject:
   - component: {fileID: 2563610455480609087}
   - component: {fileID: 2481725971986315344}
   m_Layer: 8
-  m_Name: Shield
-  m_TagString: Untagged
+  m_Name: Shield Aura 1
+  m_TagString: Shield Aura
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using FXV;
 
 //TODO: CHeck and add Collider & Rigidbody in runtime
 [RequireComponent(typeof(Collider), typeof(Rigidbody))]
@@ -10,8 +11,9 @@ public class HealthSystem : MonoBehaviour
     [SerializeField] float immuneDuration = 2;
     [SerializeField] float maxHealth = 10;
     [SerializeField] TextMeshProUGUI label;
-    [SerializeField] GameObject damagingVfx;
-    [SerializeField] FXV.FXVShield shieldAura;
+    [SerializeField] FXVShield shieldAura;
+    [SerializeField] FXVShield damagedShieldAura;
+
     VfxManager vfxManager;
 
     float currentHealth;
@@ -25,6 +27,7 @@ public class HealthSystem : MonoBehaviour
         currentHealth = maxHealth;
         UpdateLabel();
         // startup shield
+        damagedShieldAura.SetShieldActive(false);
         StartCoroutine(GetShielded(5f));
     }
 
@@ -53,6 +56,8 @@ public class HealthSystem : MonoBehaviour
                 StartCoroutine(GetShielded(other.GetComponent<Shield>().duration));
                 Destroy(other);
                 break;
+            case "Shield Aura":
+                break;
             default: // TODO: for terrain
                 ContactPoint contact = collision.contacts[0];
                 vfxManager.playExplosionFx(contact.point, 0.5f);
@@ -76,11 +81,11 @@ public class HealthSystem : MonoBehaviour
         currentHealth--;
         UpdateLabel();
         isImmune = true;
-        damagingVfx.SetActive(true);
+        damagedShieldAura.SetShieldActive(true);
 
         yield return new WaitForSeconds(immuneDuration);
         isImmune = false;
-        damagingVfx.SetActive(false);
+        damagedShieldAura.SetShieldActive(false);
     }
 
     private void Heal(int amount)
