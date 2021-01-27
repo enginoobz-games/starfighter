@@ -12,6 +12,8 @@ TagManager:
   - PW - Nature
   - Mine
   - Enemy
+  - Heart
+  - Shield
   layers:
   - Default
   - TransparentFX

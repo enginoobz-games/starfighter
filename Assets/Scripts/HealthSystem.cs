@@ -15,13 +15,14 @@ public class HealthSystem : MonoBehaviour
 
     float currentHealth;
     Collider theCollider;
+    bool isImmune = false;
     // Start is called before the first frame update
     void Start()
     {
         theCollider = GetComponent<MeshCollider>();
         vfxManager = FindObjectOfType<VfxManager>();
         currentHealth = maxHealth;
-        updateLabel();
+        UpdateLabel();
     }
 
     // Update is called once per frame
@@ -32,35 +33,59 @@ public class HealthSystem : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        StartCoroutine(nameof(getDamaged));
-
-        ContactPoint contact = collision.contacts[0];
-        vfxManager.playExplosionFx(contact.point, 0.5f);
-
         GameObject other = collision.gameObject;
-        switch (other.gameObject.tag)
+        switch (other.tag)
         {
             case "Mine":
             case "Enemy":
-                Destroy(other.gameObject);
+                Destroy(other);
                 vfxManager.playExplosionFx(other.transform.position, 1f);
+                if (!isImmune) StartCoroutine(nameof(GetDamaged));
+                break;
+            case "Heart":
+                Heal(other.GetComponent<Heart>().healingAmount);
+                Destroy(other);
+                break;
+            case "Shield":
+                StartCoroutine(GetShielded(other.GetComponent<Shield>().duration));
+                Destroy(other);
+                break;
+            default: // TODO: for terrain
+                ContactPoint contact = collision.contacts[0];
+                vfxManager.playExplosionFx(contact.point, 0.5f);
+                if (!isImmune) StartCoroutine(nameof(GetDamaged));
                 break;
         }
     }
 
-    IEnumerator getDamaged()
+    IEnumerator GetShielded(float duration)
+    {
+        isImmune = true;
+        print(isImmune);
+
+        yield return new WaitForSeconds(duration);
+        isImmune = false;
+    }
+
+    IEnumerator GetDamaged()
     {
         currentHealth--;
-        updateLabel();
-        theCollider.enabled = false;
+        UpdateLabel();
+        isImmune = true;
         damagingVfx.SetActive(true);
 
         yield return new WaitForSeconds(immuneDuration);
-        theCollider.enabled = true;
+        isImmune = false;
         damagingVfx.SetActive(false);
     }
 
-    private void updateLabel()
+    private void Heal(int amount)
+    {
+        currentHealth = Mathf.Min(maxHealth, currentHealth + amount);
+        UpdateLabel();
+    }
+
+    private void UpdateLabel()
     {
         label.text = "Health\n" + currentHealth + "/" + maxHealth;
     }
