@@ -48,7 +48,7 @@ public class Enemy : MonoBehaviour
 
     private void OnParticleCollision(GameObject other)
     {
-        vfxManager.playExplosionFx(transform.position, 0.05f);
+        vfxManager.playDamagingFx(transform.position, 0.05f);
         if (--health <= 0)
         {
             Die();

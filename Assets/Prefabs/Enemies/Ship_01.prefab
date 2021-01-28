@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1674919402133125249}
   - component: {fileID: 1665299485232123289}
   - component: {fileID: 7335194584451555776}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Ship_01
   m_TagString: Mine
   m_Icon: {fileID: 0}
@@ -27,7 +27,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1678613166333182957}
   m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 70, y: 71, z: 6}
+  m_LocalPosition: {x: 70, y: 70, z: 6}
   m_LocalScale: {x: 3, y: 3, z: 3}
   m_Children: []
   m_Father: {fileID: 0}
@@ -93,4 +93,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 5
-  scoreOnDestroy: 10
+  coinOnDestroy: 0

@@ -23,7 +23,7 @@ public class ProjectileShooter : MonoBehaviour
 
     void Start()
     {
-        InvokeRepeating(nameof(Next), 5f, 5f);
+        // InvokeRepeating(nameof(Next), 5f, 5f);
 
         if (cameras.transform.childCount > 0)
         {

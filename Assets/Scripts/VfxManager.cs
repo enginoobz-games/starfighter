@@ -5,14 +5,18 @@ using UnityEngine;
 public class VfxManager : MonoBehaviour
 {
     [SerializeField] ParticleSystem[] explosionPrefabs;
+    [SerializeField] ParticleSystem[] damagingPrefabs;
 
     // list storing all instances of all prefabs
     List<ParticleSystem> explosions = new List<ParticleSystem>();
+    List<ParticleSystem> damagings = new List<ParticleSystem>();
+
 
     int poolSize = 3;
     // Start is called before the first frame update
     void Start()
     {
+        // TODO: refactor similar functions
         foreach (ParticleSystem explosionPrefab in explosionPrefabs)
         {
             for (int i = 0; i < poolSize; i++)
@@ -21,6 +25,17 @@ public class VfxManager : MonoBehaviour
                 // set fx as child of this manager
                 fx.transform.parent = transform;
                 explosions.Add(fx);
+            }
+        }
+
+        foreach (ParticleSystem damagingPrefab in damagingPrefabs)
+        {
+            for (int i = 0; i < poolSize * 2; i++)
+            {
+                ParticleSystem fx = Instantiate(damagingPrefab, new Vector3(0, 0, 0), Quaternion.identity);
+                // set fx as child of this manager
+                fx.transform.parent = transform;
+                damagings.Add(fx);
             }
         }
     }
@@ -36,7 +51,7 @@ public class VfxManager : MonoBehaviour
     public void playExplosionFx(Vector3 pos, float scale)
     {
         // TODO: choose index of last inactive element
-        int randomIndex = Random.Range(0, explosions.Count - 1);
+        int randomIndex = Random.Range(0, explosions.Count);
 
         explosions[randomIndex].transform.position = pos;
         // ParticleSystem.MainModule mainModule = explosions[randomIndex].main;
@@ -44,5 +59,13 @@ public class VfxManager : MonoBehaviour
         explosions[randomIndex].Play();
         // mainModule.startSize = new ParticleSystem.MinMaxCurve { constantMin = mainModule.startSize.constantMin / scale, constantMax = mainModule.startSize.constantMax / scale };
 
+    }
+
+    public void playDamagingFx(Vector3 pos, float scale)
+    {
+        int randomIndex = Random.Range(0, damagings.Count);
+
+        damagings[randomIndex].transform.position = pos;
+        damagings[randomIndex].Play();
     }
 }
