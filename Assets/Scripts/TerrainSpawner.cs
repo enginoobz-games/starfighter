@@ -32,6 +32,12 @@ public class TerrainSpawner : MonoBehaviour
     {
         int randomIndex = RandomIntExcept(0, tiles.Count, lastSpawnedTileIndex);
         tiles[randomIndex].transform.position = new Vector3(terrainSize / 2 + coord * terrainSize, 0, -terrainSize / 2);
+        foreach (Transform child in tiles[randomIndex].transform)
+        {
+            // to move childrend with terrain, don't mark it static
+            print(child.name);
+            print(child.transform.position);
+        }
         lastSpawnedTileIndex = randomIndex;
     }
 
