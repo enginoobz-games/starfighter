@@ -5,27 +5,6 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
-    path: Assets/Scenes/Sandbox Davronbek/D1.unity
-    guid: f7d240c946b93fd4aaddd6bbc009aeb8
-  - enabled: 0
-    path: Assets/sandbox1.unity
-    guid: 24a3d83418c69484195332e3397a9866
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
-  - enabled: 0
-    path: Assets/Scenes/Sandbox Harry/Sandbox-Harry.unity
-    guid: a8f4f99718679da4fa7ad8f525581ff7
-  - enabled: 0
-    path: Assets/Scenes/Sandbox Harry/Sandbox.unity
-    guid: d1c3109bdb54ad54c8a2b2838528e640
   - enabled: 1
     path: Assets/Scenes/Sandbox Harry/D1 Test TerrainSpawner.unity
     guid: fc3ed7dbeac57af47a6e59d7fda62790
