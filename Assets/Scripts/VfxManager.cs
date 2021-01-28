@@ -76,6 +76,7 @@ public class VfxManager : MonoBehaviour
 
     }
 
+    // make damaging FX as child of damaged object
     public void playDamagingFx(Vector3 pos, float scale)
     {
         int randomIndex = Random.Range(0, damagings.Count);

@@ -4,13 +4,17 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    // [SerializeField] GameObject explosionFX;
-    // [SerializeField] GameObject damageFX;
     [SerializeField] float health = 5f;
     [SerializeField] int cointOnDestroy;
-    float timer = 10f; //first travel: same speed as player's, after timer start approaching player
-    bool isMovingForwards = false;
-    bool triggered = false;
+
+    // behavior: when player reachs this distance away from enemy, enemy is triggered and start following player for a duration then stops
+    [SerializeField] Vector2 triggerDistanceRange = new Vector2(40f, 60f);
+    [SerializeField] Vector2 followDurationRange = new Vector2(5f, 10f);
+
+    float triggerDistance; //= 50f;
+    float followDuration; // = 10f;
+    bool followingPlayer = false;
+    bool followTriggered = false;
     VfxManager vfxManager;
 
 
@@ -19,8 +23,11 @@ public class Enemy : MonoBehaviour
     {
         SetupCollider();
         vfxManager = FindObjectOfType<VfxManager>();
+        triggerDistance = Random.Range(triggerDistanceRange.x, triggerDistanceRange.y);
+        followDuration = Random.Range(followDurationRange.x, followDurationRange.y);
     }
 
+    // HELPER
     private void SetupCollider()
     {
         MeshCollider meshCollider = gameObject.GetComponent<MeshCollider>();
@@ -44,16 +51,17 @@ public class Enemy : MonoBehaviour
     void Update()
     {
         // when player just comes closer to enemy at distance 40
-        if (transform.position.x < CameraRig.Instance.transform.position.x + 50 && !triggered)
+        if (transform.position.x < CameraRig.Instance.transform.position.x + triggerDistance && !followTriggered)
         {
-            triggered = true;
-            isMovingForwards = true;
-            StartCoroutine(StopMovingForwards(timer));
+            followTriggered = true;
+            followingPlayer = true;
+            StartCoroutine(StopFollowing(followDuration));
         }
 
-        if (isMovingForwards)
+        if (followingPlayer)
         {
             transform.Translate(Vector3.back * Time.deltaTime * CameraRig.Instance.moveSpeed);
+            // TODO: fire player
         }
 
         // destroy when player passes it
@@ -63,10 +71,10 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    IEnumerator StopMovingForwards(float time)
+    IEnumerator StopFollowing(float time)
     {
         yield return new WaitForSeconds(time);
-        isMovingForwards = false;
+        followingPlayer = false;
     }
 
     private void OnParticleCollision(GameObject other)
@@ -76,14 +84,6 @@ public class Enemy : MonoBehaviour
 
     // TODO: destroy on terrain collision
     private void OnCollisionEnter(Collision other)
-    {
-        if (other.gameObject.CompareTag("Terrain"))
-        {
-            Die();
-        }
-    }
-
-    private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Terrain"))
         {
@@ -103,9 +103,6 @@ public class Enemy : MonoBehaviour
 
     private void Die()
     {
-        // scoreLabel.UpdateOnEnemyDestroyed(scoreOnDestroy);
-        // GameObject explosion = Instantiate(explosionFX, transform.position, Quaternion.identity);
-        // Destroy(explosion, 1.5f);
         GameUI.Instance.UpdateCoint(cointOnDestroy);
         vfxManager.playExplosionFx(transform.position, 10f);
         Destroy(gameObject);
