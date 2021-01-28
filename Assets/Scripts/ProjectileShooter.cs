@@ -5,16 +5,15 @@ using UnityEngine.UI;
 
 public class ProjectileShooter : MonoBehaviour
 {
-
     public bool use2D;
     public bool cameraShake;
     public GameObject firePoint;
     public GameObject cameras;
-    // to configure direction of bullets, angleOffset.y = - Camera.tranform.rotation.y
-    [SerializeField] Vector3 angleOffset = new Vector3(-10, 90, 0);
+
     public List<GameObject> VFXs = new List<GameObject>();
 
-
+    // to configure direction of bullets, angleOffset.y = - Camera.tranform.rotation.y
+    Vector3 rotateOffset = new Vector3(-10, 90, 0);
     private int count = 0;
     private float timeToFire = 0f;
     private GameObject effectToSpawn;
@@ -54,6 +53,7 @@ public class ProjectileShooter : MonoBehaviour
 
     void Update()
     {
+        UpdateRotateOffset();
         if (Input.GetKey(KeyCode.Space) && Time.time >= timeToFire || Input.GetMouseButton(0) && Time.time >= timeToFire)
         {
             timeToFire = Time.time + 1f / effectToSpawn.GetComponent<ProjectileMoveScript>().fireRate;
@@ -74,6 +74,46 @@ public class ProjectileShooter : MonoBehaviour
             ZoomOut();
     }
 
+    private void UpdateRotateOffset()
+    {
+        // TODO: parameterize
+        // yPlayer: -30 -> 30
+        // yOffset: 60  -> 120
+        // xPlayer: -15 -> 15
+        // xOffset: -25 -> 0
+        float yRotatePlayer = WrapAngle(transform.parent.transform.localRotation.eulerAngles.y);
+        rotateOffset.y = Remap(yRotatePlayer, -30, 30, 70, 110);
+        float xRotatePlayer = WrapAngle(transform.parent.transform.localRotation.eulerAngles.x);
+        rotateOffset.x = Remap(xRotatePlayer, -15, 15, -20, 0);
+    }
+
+    // HELPER
+    private float WrapAngle(float angle) // to get the raw value as in inspector (include negative value, not 0-360)
+    {
+        angle %= 360;
+        if (angle > 180)
+            return angle - 360;
+
+        return angle;
+    }
+
+    // HELPER
+    private float UnwrapAngle(float angle)
+    {
+        if (angle >= 0)
+            return angle;
+
+        angle = -angle % 360;
+
+        return 360 - angle;
+    }
+
+    // HELPER
+    private float Remap(float value, float from1, float to1, float from2, float to2)
+    {
+        return (value - from1) / (to1 - from1) * (to2 - from2) + from2;
+    }
+
     public void SpawnVFX()
     {
         GameObject vfx;
@@ -85,7 +125,7 @@ public class ProjectileShooter : MonoBehaviour
 
         if (firePoint != null)
         {
-            vfx = Instantiate(effectToSpawn, firePoint.transform.position, Quaternion.identity * Quaternion.Euler(angleOffset.x, angleOffset.y, angleOffset.z));
+            vfx = Instantiate(effectToSpawn, firePoint.transform.position, Quaternion.identity * Quaternion.Euler(rotateOffset.x, rotateOffset.y, rotateOffset.z));
         }
         else
             vfx = Instantiate(effectToSpawn);
