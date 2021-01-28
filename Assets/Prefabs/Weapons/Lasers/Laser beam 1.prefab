@@ -47630,7 +47630,7 @@ Transform:
   m_GameObject: {fileID: 1962479828434100}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children:
   - {fileID: 4748503497235184}
   - {fileID: 4826557516560280}
@@ -47651,9 +47651,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   HitEffect: {fileID: 1132006484797202}
   HitOffset: 0.01
-  MaxLength: 300
+  MaxLength: 500
   MainTextureLength: 0.5
-  NoiseTextureLength: 0.5
+  NoiseTextureLength: 0.1
 --- !u!120 &120065101442726732
 LineRenderer:
   m_ObjectHideFlags: 0
@@ -47713,7 +47713,7 @@ LineRenderer:
         outWeight: 0.33333334
       - serializedVersion: 3
         time: 1
-        value: 0.7734375
+        value: 1
         inSlope: 0
         outSlope: 0
         tangentMode: 0

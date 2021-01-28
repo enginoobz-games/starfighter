@@ -83,7 +83,7 @@ public class LaserShooter : MonoBehaviour
             }
             else
             {
-                var pos = RayMouse.GetPoint(MaxLength);
+                // var pos = RayMouse.GetPoint(MaxLength);
                 // RotateToMouseDirection(gameObject, pos);
                 //LaserEndPoint = pos;
             }

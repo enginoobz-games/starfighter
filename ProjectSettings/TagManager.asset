@@ -15,6 +15,7 @@ TagManager:
   - Heart
   - Shield
   - Shield Aura
+  - Terrain
   layers:
   - Default
   - TransparentFX
