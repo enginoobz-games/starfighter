@@ -24,7 +24,8 @@ public class ObjectSpawner : MonoBehaviour
     {
         Vector3 cameraPos = CameraRig.Instance.gameObject.transform.position;
         Vector3 spawnPos = cameraPos + new Vector3(300, Random.Range(-yRange, yRange), Random.Range(-zRange, zRange));
-        GameObject mine = Instantiate(prefabs[Random.Range(0, prefabs.Length)], spawnPos, Quaternion.identity);
+        GameObject spawnPrefab = prefabs[Random.Range(0, prefabs.Length)];
+        GameObject mine = Instantiate(spawnPrefab, spawnPos, spawnPrefab.transform.rotation);
         mine.transform.parent = transform;
         Destroy(mine, 15f);
     }

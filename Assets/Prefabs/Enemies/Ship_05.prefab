@@ -92,5 +92,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33ec7359e19c7a8428d56cea6c0df01e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 3
-  coinOnDestroy: 0
+  health: 1
+  cointOnDestroy: 5

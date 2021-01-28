@@ -6,8 +6,8 @@ public class Enemy : MonoBehaviour
 {
     // [SerializeField] GameObject explosionFX;
     // [SerializeField] GameObject damageFX;
-    [SerializeField] int health = 5;
-    [SerializeField] int coinOnDestroy;
+    [SerializeField] float health = 5f;
+    [SerializeField] int cointOnDestroy;
 
     // ScoreLabel scoreLabel;
     VfxManager vfxManager;
@@ -48,8 +48,14 @@ public class Enemy : MonoBehaviour
 
     private void OnParticleCollision(GameObject other)
     {
+        GetDamaged(1f);
+    }
+
+    public void GetDamaged(float damage)
+    {
         vfxManager.playDamagingFx(transform.position, 0.05f);
-        if (--health <= 0)
+        health -= damage;
+        if (health <= 0)
         {
             Die();
         }
@@ -60,7 +66,7 @@ public class Enemy : MonoBehaviour
         // scoreLabel.UpdateOnEnemyDestroyed(scoreOnDestroy);
         // GameObject explosion = Instantiate(explosionFX, transform.position, Quaternion.identity);
         // Destroy(explosion, 1.5f);
-        GameUI.Instance.UpdateCoint(coinOnDestroy);
+        GameUI.Instance.UpdateCoint(cointOnDestroy);
         vfxManager.playExplosionFx(transform.position, 10f);
         Destroy(gameObject);
     }

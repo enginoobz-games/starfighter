@@ -14,7 +14,7 @@ public class EGA_Laser : MonoBehaviour
 
     public float MainTextureLength = 1f;
     public float NoiseTextureLength = 1f;
-    private Vector4 Length = new Vector4(1,1,1,1);
+    private Vector4 Length = new Vector4(1, 1, 1, 1);
     //private Vector4 LaserSpeed = new Vector4(0, 0, 0, 0); {DISABLED AFTER UPDATE}
     //private Vector4 LaserStartSpeed; {DISABLED AFTER UPDATE}
     //One activation per shoot
@@ -24,7 +24,7 @@ public class EGA_Laser : MonoBehaviour
     private ParticleSystem[] Effects;
     private ParticleSystem[] Hit;
 
-    void Start ()
+    void Start()
     {
         //Get LineRender and ParticleSystem components from current prefab;  
         Laser = GetComponent<LineRenderer>();
@@ -40,7 +40,7 @@ public class EGA_Laser : MonoBehaviour
     {
         //if (Laser.material.HasProperty("_SpeedMainTexUVNoiseZW")) Laser.material.SetVector("_SpeedMainTexUVNoiseZW", LaserSpeed);
         //SetVector("_TilingMainTexUVNoiseZW", Length); - old code, _TilingMainTexUVNoiseZW no more exist
-        Laser.material.SetTextureScale("_MainTex", new Vector2(Length[0], Length[1]));                    
+        Laser.material.SetTextureScale("_MainTex", new Vector2(Length[0], Length[1]));
         Laser.material.SetTextureScale("_Noise", new Vector2(Length[2], Length[3]));
         //To set LineRender position
         if (Laser != null && UpdateSaver == false)
@@ -50,6 +50,11 @@ public class EGA_Laser : MonoBehaviour
             //ADD THIS IF YOU WANNT TO USE LASERS IN 2D: RaycastHit2D hit = Physics2D.Raycast(transform.position, transform.forward, MaxLength);       
             if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, MaxLength))//CHANGE THIS IF YOU WANT TO USE LASERRS IN 2D: if (hit.collider != null)
             {
+                if (hit.collider.CompareTag("Enemy"))
+                {
+                    hit.collider.gameObject.GetComponent<Enemy>().GetDamaged(0.4f); // TODO: paramiterize damage & rate
+                    VfxManager.Instance.playDamagingFx(hit.collider.transform.position, 0.05f);
+                }
                 //End laser position if collides with object
                 Laser.SetPosition(1, hit.point);
                 HitEffect.transform.position = hit.point + hit.normal * HitOffset;
@@ -88,7 +93,7 @@ public class EGA_Laser : MonoBehaviour
                 LaserSaver = true;
                 Laser.enabled = true;
             }
-        }  
+        }
     }
 
     public void DisablePrepare()

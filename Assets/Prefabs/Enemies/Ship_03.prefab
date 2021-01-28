@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 6141378151694814529}
   m_Layer: 13
   m_Name: Ship_03
-  m_TagString: Mine
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -92,5 +92,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33ec7359e19c7a8428d56cea6c0df01e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 5
-  coinOnDestroy: 0
+  health: 2
+  cointOnDestroy: 10
