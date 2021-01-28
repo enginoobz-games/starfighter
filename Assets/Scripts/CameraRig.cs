@@ -37,7 +37,7 @@ public class CameraRig : MonoBehaviour
         StartCoroutine(UpdateDistanceLabel(0.3f));
     }
 
-    void FixedUpdate()
+    void Update()
     {
         transform.Translate(Vector3.forward * Time.deltaTime * moveSpeed);
 

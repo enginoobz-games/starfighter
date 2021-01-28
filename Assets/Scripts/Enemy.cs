@@ -8,8 +8,9 @@ public class Enemy : MonoBehaviour
     // [SerializeField] GameObject damageFX;
     [SerializeField] float health = 5f;
     [SerializeField] int cointOnDestroy;
-
-    // ScoreLabel scoreLabel;
+    float timer = 10f; //first travel: same speed as player's, after timer start approaching player
+    bool isMovingForwards = false;
+    bool triggered = false;
     VfxManager vfxManager;
 
 
@@ -18,7 +19,6 @@ public class Enemy : MonoBehaviour
     {
         SetupCollider();
         vfxManager = FindObjectOfType<VfxManager>();
-        // scoreLabel = FindObjectOfType<ScoreLabel>();
     }
 
     private void SetupCollider()
@@ -43,12 +43,52 @@ public class Enemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // when player just comes closer to enemy at distance 40
+        if (transform.position.x < CameraRig.Instance.transform.position.x + 50 && !triggered)
+        {
+            triggered = true;
+            isMovingForwards = true;
+            StartCoroutine(StopMovingForwards(timer));
+        }
 
+        if (isMovingForwards)
+        {
+            transform.Translate(Vector3.back * Time.deltaTime * CameraRig.Instance.moveSpeed);
+        }
+
+        // destroy when player passes it
+        if (transform.position.x < CameraRig.Instance.transform.position.x - 60)
+        {
+            Destroy(gameObject);
+        }
+    }
+
+    IEnumerator StopMovingForwards(float time)
+    {
+        yield return new WaitForSeconds(time);
+        isMovingForwards = false;
     }
 
     private void OnParticleCollision(GameObject other)
     {
         GetDamaged(1f);
+    }
+
+    // TODO: destroy on terrain collision
+    private void OnCollisionEnter(Collision other)
+    {
+        if (other.gameObject.CompareTag("Terrain"))
+        {
+            Die();
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Terrain"))
+        {
+            Die();
+        }
     }
 
     public void GetDamaged(float damage)
