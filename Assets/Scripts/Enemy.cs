@@ -103,7 +103,7 @@ public class Enemy : MonoBehaviour
 
     private void Die()
     {
-        GameUI.Instance.UpdateCoint(cointOnDestroy);
+        GameManager.Instance.UpdateCoint(cointOnDestroy);
         vfxManager.playExplosionFx(transform.position, 10f);
         Destroy(gameObject);
     }

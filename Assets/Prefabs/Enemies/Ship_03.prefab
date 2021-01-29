@@ -94,3 +94,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 2
   cointOnDestroy: 10
+  triggerDistanceRange: {x: 30, y: 45}
+  followDurationRange: {x: 5, y: 10}
