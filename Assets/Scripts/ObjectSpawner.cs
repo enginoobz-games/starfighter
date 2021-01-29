@@ -31,6 +31,6 @@ public class ObjectSpawner : MonoBehaviour
         @object.transform.parent = transform;
 
         if (autoDispose)
-            Destroy(@object, 15f);
+            Destroy(@object, 20f);
     }
 }

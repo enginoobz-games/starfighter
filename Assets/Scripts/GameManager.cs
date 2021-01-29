@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour
     [Header("GAME PLAY")]
     [Tooltip("Tile coordinate where boss starts to appear")]
     public int bossCoord = 3;
+    [SerializeField] GiantWorm boss;
 
     int coint = 0;
     int travelDistance = 0;
@@ -48,5 +49,11 @@ public class GameManager : MonoBehaviour
     {
         travelDistance = (int)CameraRig.Instance.transform.position.x;
         distanceLabel.text = "Distance\n" + travelDistance + " m";
+    }
+
+    public void TriggerBoss()
+    {
+        boss.gameObject.SetActive(true);
+        boss.Appear(new Vector3(CameraRig.Instance.transform.position.x + boss.appearDistance, 10, -20));
     }
 }
