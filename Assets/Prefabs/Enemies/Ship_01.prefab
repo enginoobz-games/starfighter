@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 1674919402133125249}
   - component: {fileID: 1665299485232123289}
   - component: {fileID: 7335194584451555776}
+  - component: {fileID: 2622604274053694768}
   m_Layer: 13
   m_Name: Ship_01
   m_TagString: Enemy
@@ -92,7 +93,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33ec7359e19c7a8428d56cea6c0df01e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 4
-  cointOnDestroy: 20
   triggerDistanceRange: {x: 30, y: 45}
   followDurationRange: {x: 5, y: 10}
+--- !u!114 &2622604274053694768
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1678613166333182957}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92341c58b928928429262ce3c68e4074, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 3
+  cointOnDestroy: 20

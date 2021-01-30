@@ -4,9 +4,6 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    [SerializeField] float health = 5f;
-    [SerializeField] int cointOnDestroy;
-
     // behavior: when player reachs this distance away from enemy, enemy is triggered and start following player for a duration then stops
     [SerializeField] Vector2 triggerDistanceRange = new Vector2(40f, 60f);
     [SerializeField] Vector2 followDurationRange = new Vector2(5f, 10f);
@@ -15,14 +12,11 @@ public class Enemy : MonoBehaviour
     float followDuration; // = 10f;
     bool followingPlayer = false;
     bool followTriggered = false;
-    VfxManager vfxManager;
-
 
     // Start is called before the first frame update
     void Start()
     {
         SetupCollider();
-        vfxManager = FindObjectOfType<VfxManager>();
         triggerDistance = Random.Range(triggerDistanceRange.x, triggerDistanceRange.y);
         followDuration = Random.Range(followDurationRange.x, followDurationRange.y);
     }
@@ -75,36 +69,5 @@ public class Enemy : MonoBehaviour
     {
         yield return new WaitForSeconds(time);
         followingPlayer = false;
-    }
-
-    private void OnParticleCollision(GameObject other)
-    {
-        GetDamaged(1f);
-    }
-
-    // TODO: destroy on terrain collision
-    private void OnCollisionEnter(Collision other)
-    {
-        if (other.gameObject.CompareTag("Terrain"))
-        {
-            Die();
-        }
-    }
-
-    public void GetDamaged(float damage)
-    {
-        vfxManager.playDamagingFx(transform.position, 0.05f);
-        health -= damage;
-        if (health <= 0)
-        {
-            Die();
-        }
-    }
-
-    private void Die()
-    {
-        GameManager.Instance.UpdateCoint(cointOnDestroy);
-        vfxManager.playExplosionFx(transform.position, 10f);
-        Destroy(gameObject);
     }
 }
