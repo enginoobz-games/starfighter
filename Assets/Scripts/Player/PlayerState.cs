@@ -5,8 +5,8 @@ using TMPro;
 using FXV;
 
 //TODO: CHeck and add Collider & Rigidbody in runtime
-[RequireComponent(typeof(Collider), typeof(Rigidbody))]
-public class HealthSystem : MonoBehaviour
+[RequireComponent(typeof(Rigidbody))]
+public class PlayerState : MonoBehaviour
 {
     [SerializeField] float immuneDuration = 2;
     [SerializeField] float maxHealth = 10;
