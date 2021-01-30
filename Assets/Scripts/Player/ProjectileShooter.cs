@@ -63,14 +63,14 @@ public class ProjectileShooter : MonoBehaviour
             Next();
         if (Input.GetKeyDown(KeyCode.Q))
             Previous();
-        if (Input.GetKeyDown(KeyCode.C))
-            SwitchCamera();
-        if (Input.GetKeyDown(KeyCode.Alpha1))
-            CameraShake();
-        if (Input.GetKeyDown(KeyCode.X))
-            ZoomIn();
-        if (Input.GetKeyDown(KeyCode.Z))
-            ZoomOut();
+        // if (Input.GetKeyDown(KeyCode.C))
+        //     SwitchCamera();
+        // if (Input.GetKeyDown(KeyCode.Alpha1))
+        //     CameraShake();
+        // if (Input.GetKeyDown(KeyCode.X))
+        //     ZoomIn();
+        // if (Input.GetKeyDown(KeyCode.Z))
+        //     ZoomOut();
     }
 
     private void UpdateRotateOffset()

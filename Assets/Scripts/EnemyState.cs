@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+// [RequireComponent(typeof(Collider))]
 public class EnemyState : MonoBehaviour
 {
     [SerializeField] float health = 5f;
@@ -18,10 +19,14 @@ public class EnemyState : MonoBehaviour
 
     }
 
-    // TODO: destroy on terrain collision
-    private void OnCollisionEnter(Collision other)
+    // note: this object with RigidBody will receive OnCollisionEnter events from children as well
+    private void OnCollisionEnter(Collision collision)
     {
-        if (other.gameObject.CompareTag("Terrain"))
+        ContactPoint contact = collision.contacts[0];
+        GetDamaged(1f, contact.point);
+
+        // TODO: destroy non-boss enemy on terrain collision
+        if (collision.gameObject.CompareTag("Terrain"))
         {
             print("enemy collides with terrain");
             // Die();
@@ -31,12 +36,14 @@ public class EnemyState : MonoBehaviour
 
     private void OnParticleCollision(GameObject other)
     {
-        GetDamaged(1f);
+        print("OnParticleCollision");
+        GetDamaged(1f, transform.position);
     }
 
-    public void GetDamaged(float damage)
+    public void GetDamaged(float damage, Vector3 pos)
     {
-        VfxManager.Instance.playDamagingFx(transform.position, 0.05f);
+        print(health);
+        VfxManager.Instance.playDamagingFx(pos, 0.05f);
         health -= damage;
         if (health <= 0)
         {

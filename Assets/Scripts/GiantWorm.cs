@@ -5,6 +5,7 @@ using UnityEngine;
 public class GiantWorm : MonoBehaviour
 {
     enum AttackStates { attack1, attack2, attack3 };
+    [SerializeField] Transform target;
     [SerializeField] Animator anim;
     [SerializeField] AttackStates currentAttackState = AttackStates.attack1;
     public float disappearDistance = 70f;
@@ -34,6 +35,7 @@ public class GiantWorm : MonoBehaviour
     public void Appear(Vector3 pos)
     {
         transform.position = pos;
+        transform.LookAt(target);
         anim.SetTrigger("appear");
         // TODO: instead of delay, detect when "appear" state finishes then trigger
         StartCoroutine(Attack(2));
@@ -45,8 +47,14 @@ public class GiantWorm : MonoBehaviour
         yield return new WaitForSeconds(delay);
         // string attackState = attackStates[Random.Range(0, attackStates.Length)];
         string attackState = System.Enum.GetName(typeof(AttackStates), currentAttackState);
-        print(attackState);
+        transform.LookAt(target);
         anim.SetTrigger(attackState);
+    }
+
+    // TODO: lerp rotate to player
+    private void LookAtPlayer()
+    {
+        transform.LookAt(target);
     }
 
     IEnumerator Reappear()

@@ -52,7 +52,7 @@ public class EGA_Laser : MonoBehaviour
             {
                 if (hit.collider.CompareTag("Enemy"))
                 {
-                    hit.collider.gameObject.GetComponent<EnemyState>().GetDamaged(0.4f); // TODO: paramiterize damage & rate
+                    hit.collider.gameObject.GetComponent<EnemyState>().GetDamaged(0.4f, hit.point); // TODO: paramiterize damage & rate
                     VfxManager.Instance.playDamagingFx(hit.collider.transform.position, 0.05f);
                 }
                 //End laser position if collides with object

@@ -69,6 +69,7 @@ public class HealthSystem : MonoBehaviour
                     ContactPoint contact = collision.contacts[0];
                     vfxManager.playExplosionFx(contact.point, 0.5f);
                     StartCoroutine(nameof(GetDamaged));
+                    print(other.name);
                 }
                 break;
         }
