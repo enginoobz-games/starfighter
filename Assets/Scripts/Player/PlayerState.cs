@@ -69,7 +69,7 @@ public class PlayerState : MonoBehaviour
                     ContactPoint contact = collision.contacts[0];
                     vfxManager.playExplosionFx(contact.point, 0.5f);
                     StartCoroutine(nameof(GetDamaged));
-                    print(other.name);
+                    // print(other.name);
                 }
                 break;
         }

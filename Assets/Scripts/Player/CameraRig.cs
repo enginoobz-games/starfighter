@@ -6,15 +6,18 @@ public class CameraRig : MonoBehaviour
 {
     public float timeTravelPerTile = 10f;
     public float timeTravelPerArena = 100f;
-    public float accelerate = 0.3f;
+    public float normalAccelerate = 0.3f;
+    public float arenaAccelerate = 0f;
     public float minTimeTravelPerTile = 3f;
     TerrainManager terrainManager;
     float currentCoord;
     int nextCoord = 0;
+    int nextBossCoord;
     bool enterArenaTriggered = false;
     bool isOnArena = false; // is fighting boss
     public float moveSpeed;
     float maxSpeed;
+    float currentAccelerate;
     float terrainSize;
 
     // singleton pattern
@@ -32,17 +35,14 @@ public class CameraRig : MonoBehaviour
         }
     }
 
-    public void SetTimeTravelPerTile(float duration)
-    {
-        timeTravelPerTile = duration;
-        moveSpeed = terrainSize / timeTravelPerTile;
-    }
     void Start()
     {
         terrainManager = FindObjectOfType<TerrainManager>();
         terrainSize = terrainManager.terrainSize;
         moveSpeed = terrainSize / timeTravelPerTile;
         maxSpeed = terrainSize / minTimeTravelPerTile;
+        nextBossCoord = GameManager.Instance.bossOccurrence;
+        currentAccelerate = normalAccelerate;
     }
 
     void Update()
@@ -50,9 +50,9 @@ public class CameraRig : MonoBehaviour
         // update position & speed
         transform.Translate(Vector3.forward * Time.deltaTime * moveSpeed);
 
-        if (accelerate != 0f && moveSpeed <= maxSpeed)
+        if (currentAccelerate != 0f && moveSpeed <= maxSpeed)
         {
-            moveSpeed += accelerate;
+            moveSpeed += currentAccelerate;
         }
 
         currentCoord = posToCoord(transform.position); // start from -1 when xStart = 0
@@ -62,12 +62,13 @@ public class CameraRig : MonoBehaviour
             nextCoord++;
             TerrainType tileType = default;
 
-            if (nextCoord < GameManager.Instance.bossCoord)
+            // print("nextCoord: " + nextCoord + " - nextBossCoord: " + nextBossCoord);
+            if (nextCoord < nextBossCoord)
             {
                 tileType = TerrainType.NORMAL;
             }
             // prepare arena tile ahead
-            else if (nextCoord == GameManager.Instance.bossCoord)
+            else if (nextCoord == nextBossCoord)
             {
                 tileType = TerrainType.ARENA;
             }
@@ -89,7 +90,7 @@ public class CameraRig : MonoBehaviour
         {
             enterArenaTriggered = true;
             isOnArena = true;
-            accelerate = 0f;
+            currentAccelerate = arenaAccelerate;
             moveSpeed = terrainSize / timeTravelPerArena;
             GameManager.Instance.OnBossAppear();
         }
@@ -97,9 +98,12 @@ public class CameraRig : MonoBehaviour
 
     public void AfterBossDefeat()
     {
-        accelerate = 0.3f;
+        currentAccelerate = normalAccelerate;
         moveSpeed = terrainSize / timeTravelPerTile;
         isOnArena = false;
+        // reset tile counter until next boss appear
+        nextBossCoord = (int)currentCoord + GameManager.Instance.bossOccurrence;
+        enterArenaTriggered = false;
     }
 
     // LOCAL HELPER
