@@ -5,9 +5,10 @@ using TMPro;
 
 public class GameManager : MonoBehaviour
 {
-    [Header("GAME SPAWNERS")]
+    [Header("SPAWNERS")]
     [SerializeField] ObjectSpawner enemySpawner;
     [SerializeField] ObjectSpawner mineSpawner;
+    [SerializeField] BossSpawner bossSpawner;
 
     [Header("GAME STATUS")]
     [SerializeField] TextMeshProUGUI cointLabel;
@@ -16,8 +17,6 @@ public class GameManager : MonoBehaviour
     [Header("GAME PLAY")]
     [Tooltip("Boss will appear after this number of tiles since last boss defeat")]
     public int bossOccurrence = 3;
-    [SerializeField] GiantWorm boss;
-
     int coint = 0;
     int travelDistance = 0;
     // Start is called before the first frame update
@@ -59,8 +58,7 @@ public class GameManager : MonoBehaviour
     {
         enemySpawner.enabled = false;
         mineSpawner.enabled = false;
-        boss.gameObject.SetActive(true);
-        boss.Appear(new Vector3(CameraRig.Instance.transform.position.x + boss.appearDistance, 10, -20));
+        bossSpawner.Spawn();
     }
 
     public void AfterBossDefeat()

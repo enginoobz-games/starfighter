@@ -102,7 +102,7 @@ public class CameraRig : MonoBehaviour
         moveSpeed = terrainSize / timeTravelPerTile;
         isOnArena = false;
         // reset tile counter until next boss appear
-        nextBossCoord = (int)currentCoord + GameManager.Instance.bossOccurrence;
+        nextBossCoord = nextCoord + GameManager.Instance.bossOccurrence;
         enterArenaTriggered = false;
     }
 

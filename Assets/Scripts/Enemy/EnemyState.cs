@@ -37,7 +37,7 @@ public class EnemyState : MonoBehaviour
 
     private void OnParticleCollision(GameObject other)
     {
-        print("OnParticleCollision");
+        // print("OnParticleCollision");
         GetDamaged(1f, transform.position);
     }
 
