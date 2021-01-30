@@ -16,7 +16,7 @@ public class GiantWorm : MonoBehaviour
 
     string[] attackStates = new string[] { "attack1", "attack2", "attack3" };
     bool reappearTriggered = false;
-
+    bool lookingAtTarget = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -32,10 +32,19 @@ public class GiantWorm : MonoBehaviour
         }
     }
 
+    private void FixedUpdate()
+    {
+        if (lookingAtTarget)
+        {
+            Vector3 lTargetDir = target.position - transform.position;
+            transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.LookRotation(lTargetDir), Time.time * 1);
+        }
+    }
+
     public void Appear(Vector3 pos)
     {
         transform.position = pos;
-        transform.LookAt(target);
+        lookingAtTarget = true;
         anim.SetTrigger("appear");
         // TODO: instead of delay, detect when "appear" state finishes then trigger
         StartCoroutine(Attack(2));
@@ -47,14 +56,10 @@ public class GiantWorm : MonoBehaviour
         yield return new WaitForSeconds(delay);
         // string attackState = attackStates[Random.Range(0, attackStates.Length)];
         string attackState = System.Enum.GetName(typeof(AttackStates), currentAttackState);
+        // look at target instantly before attacking
         transform.LookAt(target);
+        lookingAtTarget = false;
         anim.SetTrigger(attackState);
-    }
-
-    // TODO: lerp rotate to player
-    private void LookAtPlayer()
-    {
-        transform.LookAt(target);
     }
 
     IEnumerator Reappear()
