@@ -41,11 +41,11 @@ public class TerrainManager : MonoBehaviour
         switch (type)
         {
             case TerrainType.NORMAL:
-                randomIndex = RandomIntExcept(0, normalTiles.Count, lastSpawnedTileIndex);
+                randomIndex = Helper.RandomIntExcept(0, normalTiles.Count, lastSpawnedTileIndex);
                 spawnTile = normalTiles[randomIndex];
                 break;
             case TerrainType.ARENA:
-                randomIndex = RandomIntExcept(0, arenaTiles.Count, lastSpawnedTileIndex);
+                randomIndex = Helper.RandomIntExcept(0, arenaTiles.Count, lastSpawnedTileIndex);
                 spawnTile = arenaTiles[randomIndex];
                 break;
         }
@@ -61,13 +61,4 @@ public class TerrainManager : MonoBehaviour
         //     print(child.transform.position);
         // }
     }
-
-    //HELPER
-    public int RandomIntExcept(int min, int max, int except) // [min,max)
-    {
-        int result = Random.Range(min, max - 1);
-        if (result >= except) result += 1;
-        return result;
-    }
-
 }

@@ -4,7 +4,8 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class ProjectileShooter : MonoBehaviour
-{    public bool use2D;
+{
+    public bool use2D;
     public bool cameraShake;
     public GameObject firePoint;
     public GameObject cameras;
@@ -80,37 +81,10 @@ public class ProjectileShooter : MonoBehaviour
         // yOffset: 60  -> 120
         // xPlayer: -15 -> 15
         // xOffset: -25 -> 0
-        float yRotatePlayer = WrapAngle(transform.parent.transform.localRotation.eulerAngles.y);
-        rotateOffset.y = Remap(yRotatePlayer, -30, 30, 70, 110);
-        float xRotatePlayer = WrapAngle(transform.parent.transform.localRotation.eulerAngles.x);
-        rotateOffset.x = Remap(xRotatePlayer, -15, 15, -20, 0);
-    }
-
-    // HELPER
-    private float WrapAngle(float angle) // to get the raw value as in inspector (include negative value, not 0-360)
-    {
-        angle %= 360;
-        if (angle > 180)
-            return angle - 360;
-
-        return angle;
-    }
-
-    // HELPER
-    private float UnwrapAngle(float angle)
-    {
-        if (angle >= 0)
-            return angle;
-
-        angle = -angle % 360;
-
-        return 360 - angle;
-    }
-
-    // HELPER
-    private float Remap(float value, float from1, float to1, float from2, float to2)
-    {
-        return (value - from1) / (to1 - from1) * (to2 - from2) + from2;
+        float yRotatePlayer = Helper.WrapAngle(transform.parent.transform.localRotation.eulerAngles.y);
+        rotateOffset.y = Helper.Remap(yRotatePlayer, -30, 30, 70, 110);
+        float xRotatePlayer = Helper.WrapAngle(transform.parent.transform.localRotation.eulerAngles.x);
+        rotateOffset.x = Helper.Remap(xRotatePlayer, -15, 15, -20, 0);
     }
 
     public void SpawnVFX()
