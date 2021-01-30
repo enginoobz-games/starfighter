@@ -67,4 +67,9 @@ public class GameManager : MonoBehaviour
         mineSpawner.enabled = true;
         CameraRig.Instance.AfterBossDefeat();
     }
+
+    public void OnGameOver()
+    {
+        CameraRig.Instance.moveSpeed = 2f;
+    }
 }

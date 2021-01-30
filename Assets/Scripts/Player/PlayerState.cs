@@ -14,8 +14,6 @@ public class PlayerState : MonoBehaviour
     [SerializeField] FXVShield shieldAura;
     [SerializeField] FXVShield damagedShieldAura; // TODO: set same mesh of ship model for this shield in runtime
 
-    VfxManager vfxManager;
-
     float currentHealth;
     Collider theCollider;
     bool isImmune = false;
@@ -24,7 +22,6 @@ public class PlayerState : MonoBehaviour
     void Start()
     {
         theCollider = GetComponent<MeshCollider>();
-        vfxManager = FindObjectOfType<VfxManager>();
         currentHealth = maxHealth;
         UpdateLabel();
         // startup shield
@@ -45,7 +42,7 @@ public class PlayerState : MonoBehaviour
             case "Mine":
             case "Enemy":
                 Destroy(other);
-                vfxManager.playExplosionFx(other.transform.position, 1f);
+                VfxManager.Instance.playExplosionFx(other.transform.position, 1f);
                 if (!isImmune) StartCoroutine(nameof(GetDamaged));
                 break;
             case "Heart":
@@ -67,7 +64,7 @@ public class PlayerState : MonoBehaviour
                 if (!isImmune)
                 {
                     ContactPoint contact = collision.contacts[0];
-                    vfxManager.playExplosionFx(contact.point, 0.5f);
+                    VfxManager.Instance.playExplosionFx(contact.point, 0.5f);
                     StartCoroutine(nameof(GetDamaged));
                     // print(other.name);
                 }
@@ -100,6 +97,12 @@ public class PlayerState : MonoBehaviour
     {
         currentHealth--;
         UpdateLabel();
+
+        if (currentHealth <= 0)
+        {
+            Die();
+        }
+
         isImmune = true;
         damagedShieldAura.shieldActivationSpeed = 3f;
         damagedShieldAura.SetShieldActive(true);
@@ -108,6 +111,13 @@ public class PlayerState : MonoBehaviour
         isImmune = false;
         damagedShieldAura.shieldActivationSpeed = 1f;
         damagedShieldAura.SetShieldActive(false);
+    }
+
+    private void Die()
+    {
+        VfxManager.Instance.playExplosionFx(transform.position, 1f);
+        GameManager.Instance.OnGameOver();
+        Destroy(gameObject);
     }
 
     private void Heal(int amount)
