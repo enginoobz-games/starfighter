@@ -5,6 +5,10 @@ using TMPro;
 
 public class GameManager : MonoBehaviour
 {
+    [Header("GAME SPAWNERS")]
+    [SerializeField] ObjectSpawner enemySpawner;
+    [SerializeField] ObjectSpawner mineSpawner;
+
     [Header("GAME STATUS")]
     [SerializeField] TextMeshProUGUI cointLabel;
     [SerializeField] TextMeshProUGUI distanceLabel;
@@ -51,14 +55,18 @@ public class GameManager : MonoBehaviour
         distanceLabel.text = "Distance\n" + travelDistance + " m";
     }
 
-    public void TriggerBoss()
+    public void OnBossAppear()
     {
+        enemySpawner.enabled = false;
+        mineSpawner.enabled = false;
         boss.gameObject.SetActive(true);
         boss.Appear(new Vector3(CameraRig.Instance.transform.position.x + boss.appearDistance, 10, -20));
     }
 
     public void AfterBossDefeat()
     {
-        CameraRig.Instance.ExitBossArena();
+        enemySpawner.enabled = true;
+        mineSpawner.enabled = true;
+        CameraRig.Instance.AfterBossDefeat();
     }
 }

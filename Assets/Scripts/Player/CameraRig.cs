@@ -11,7 +11,8 @@ public class CameraRig : MonoBehaviour
     TerrainManager terrainManager;
     float currentCoord;
     int nextCoord = 0;
-    bool enterArenaTrigger = false;
+    bool enterArenaTriggered = false;
+    bool isOnArena = false; // is fighting boss
     public float moveSpeed;
     float maxSpeed;
     float terrainSize;
@@ -56,47 +57,52 @@ public class CameraRig : MonoBehaviour
 
         currentCoord = posToCoord(transform.position); // start from -1 when xStart = 0
         //trigger (once) TerrainSpawner to spawn 1 tile ahead when just move in next tile (nextCoord)
-        if (nextCoord - Mathf.Floor(currentCoord) == 0)
+        if (nextCoord == Mathf.Floor(currentCoord))
         {
             nextCoord++;
+            TerrainType tileType = default;
+
             if (nextCoord < GameManager.Instance.bossCoord)
             {
-                terrainManager.SpawnOnCoord((int)Mathf.Floor(currentCoord) + 1, TerrainType.NORMAL);
+                tileType = TerrainType.NORMAL;
             }
             // prepare arena tile ahead
             else if (nextCoord == GameManager.Instance.bossCoord)
             {
-                terrainManager.SpawnOnCoord((int)Mathf.Floor(currentCoord) + 1, TerrainType.ARENA);
+                tileType = TerrainType.ARENA;
             }
-            // keep spawn arena tile ahead during boss fight
-            // TODO: process after boss defeat
             else
             {
-                terrainManager.SpawnOnCoord((int)Mathf.Floor(currentCoord) + 1, TerrainType.ARENA);
-
-                // just enter, code inside excute only once
-                if (!enterArenaTrigger)
-                {
-                    EnterBossArena();
-                    enterArenaTrigger = true;
-                }
+                OnBossEncounter();
+                // keep spawn arena tile ahead during boss fight
+                tileType = isOnArena ? TerrainType.ARENA : TerrainType.NORMAL;
             }
+
+            terrainManager.SpawnOnCoord((int)Mathf.Floor(currentCoord) + 1, tileType);
         }
     }
 
-    private void EnterBossArena()
+    private void OnBossEncounter()
     {
-        accelerate = 0f;
-        moveSpeed = terrainSize / timeTravelPerArena;
-        GameManager.Instance.TriggerBoss();
+        // trigger enter arena event, code inside excute only once
+        if (!enterArenaTriggered)
+        {
+            enterArenaTriggered = true;
+            isOnArena = true;
+            accelerate = 0f;
+            moveSpeed = terrainSize / timeTravelPerArena;
+            GameManager.Instance.OnBossAppear();
+        }
     }
 
-    public void ExitBossArena()
+    public void AfterBossDefeat()
     {
         accelerate = 0.3f;
         moveSpeed = terrainSize / timeTravelPerTile;
+        isOnArena = false;
     }
 
+    // LOCAL HELPER
     public float posToCoord(Vector3 pos)
     {
         return (pos.x - terrainSize / 2) / terrainSize;
