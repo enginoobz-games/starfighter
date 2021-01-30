@@ -11,7 +11,7 @@ public class GiantWorm : MonoBehaviour
     public float disappearDistance = 70f;
     public float appearDistance = 120f;
     [SerializeField] float appearY = 10f;
-    [SerializeField] float appearZ = 20f;
+    [SerializeField] float appearZ = 20f; // -32 -> 32 (scale 17)
 
 
     string[] attackStates = new string[] { "attack1", "attack2", "attack3" };
