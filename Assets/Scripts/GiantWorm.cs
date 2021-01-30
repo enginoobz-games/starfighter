@@ -6,26 +6,31 @@ public class GiantWorm : MonoBehaviour
 {
     enum AttackStates { attack1, attack2, attack3 };
     [SerializeField] Transform target;
+    [SerializeField] float lookAtSpeed = 0.5f;
     [SerializeField] Animator anim;
     [SerializeField] AttackStates currentAttackState = AttackStates.attack1;
+    [SerializeField] AudioClip backgroundSound;
     public float disappearDistance = 70f;
     public float appearDistance = 120f;
     [SerializeField] float appearY = 10f;
-    [SerializeField] float appearZ = 20f; // -32 -> 32 (scale 17)
-
+    [SerializeField] Vector2 appearRangeZ = new Vector2(-25f, 25f);
 
     string[] attackStates = new string[] { "attack1", "attack2", "attack3" };
-    bool reappearTriggered = false;
     bool lookingAtTarget = false;
+    bool reappearTriggered = false;
+    bool onDieTriggered = false;
+    Rigidbody rigidbody;
     // Start is called before the first frame update
     void Start()
     {
-        //anim = GetComponent<Animator>();
+        rigidbody = GetComponent<Rigidbody>();
+        // anim = GetComponent<Animator>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (onDieTriggered) return;
         if (transform.position.x < CameraRig.Instance.transform.position.x + disappearDistance && !reappearTriggered)
         {
             StartCoroutine(nameof(Reappear));
@@ -34,12 +39,30 @@ public class GiantWorm : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (lookingAtTarget)
+        if (lookingAtTarget && !onDieTriggered)
         {
             Vector3 lTargetDir = target.position - transform.position;
-            transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.LookRotation(lTargetDir), Time.time * 1);
+            // lTargetDir.x = -50;
+            transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.LookRotation(lTargetDir), Time.time * lookAtSpeed);
         }
     }
+
+    // TODO: stop colliding with the player
+    public void OnDie(int cointOnDestroy) // string reference
+    {
+        if (onDieTriggered) return;
+
+        GameManager.Instance.UpdateCoint(cointOnDestroy);
+
+        for (int i = 0; i < 12; i++)
+        {
+            VfxManager.Instance.playExplosionFx(new Vector3(transform.position.x + Random.Range(-2, 2), Random.Range(40f, 70f), transform.position.z + Random.Range(-10, 10)), 1f);
+        }
+        anim.SetTrigger("death");
+        onDieTriggered = true;
+        StartCoroutine(nameof(Disable));
+    }
+
 
     public void Appear(Vector3 pos)
     {
@@ -67,7 +90,15 @@ public class GiantWorm : MonoBehaviour
         reappearTriggered = true;
         anim.SetTrigger("disappear");
         yield return new WaitForSeconds(3);
-        Appear(new Vector3(CameraRig.Instance.transform.position.x + appearDistance, appearY, appearZ));
+        Appear(new Vector3(CameraRig.Instance.transform.position.x + appearDistance, appearY, Random.Range(appearRangeZ.x, appearRangeZ.y)));
         reappearTriggered = false;
+    }
+
+    IEnumerator Disable()
+    {
+        yield return new WaitForSeconds(5f);
+        onDieTriggered = false;
+        gameObject.SetActive(false);
+        GameManager.Instance.AfterBossDefeat();
     }
 }

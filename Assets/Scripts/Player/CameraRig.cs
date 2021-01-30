@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class CameraRig : MonoBehaviour
 {
-    [SerializeField] float timeTravelPerTile = 10f;
-    [SerializeField] float accelerate = 0.018f;
-    [SerializeField] float minTimeTravelPerTile = 3f;
+    public float timeTravelPerTile = 10f;
+    public float timeTravelPerArena = 100f;
+    public float accelerate = 0.3f;
+    public float minTimeTravelPerTile = 3f;
     TerrainManager terrainManager;
     float currentCoord;
     int nextCoord = 0;
@@ -28,6 +29,12 @@ public class CameraRig : MonoBehaviour
         {
             _instance = this;
         }
+    }
+
+    public void SetTimeTravelPerTile(float duration)
+    {
+        timeTravelPerTile = duration;
+        moveSpeed = terrainSize / timeTravelPerTile;
     }
     void Start()
     {
@@ -79,10 +86,15 @@ public class CameraRig : MonoBehaviour
 
     private void EnterBossArena()
     {
-        print("Enter boss arena");
         accelerate = 0f;
-        moveSpeed = 10f;
+        moveSpeed = terrainSize / timeTravelPerArena;
         GameManager.Instance.TriggerBoss();
+    }
+
+    public void ExitBossArena()
+    {
+        accelerate = 0.3f;
+        moveSpeed = terrainSize / timeTravelPerTile;
     }
 
     public float posToCoord(Vector3 pos)

@@ -70,4 +70,11 @@ public class Enemy : MonoBehaviour
         yield return new WaitForSeconds(time);
         followingPlayer = false;
     }
+
+    public void OnDie(int cointOnDestroy) // string reference
+    {
+        GameManager.Instance.UpdateCoint(cointOnDestroy);
+        VfxManager.Instance.playExplosionFx(transform.position, 10f);
+        Destroy(gameObject);
+    }
 }

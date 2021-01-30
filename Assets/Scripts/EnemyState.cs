@@ -47,14 +47,7 @@ public class EnemyState : MonoBehaviour
         health -= damage;
         if (health <= 0)
         {
-            Die();
+            gameObject.SendMessage("OnDie", cointOnDestroy);
         }
-    }
-
-    private void Die()
-    {
-        GameManager.Instance.UpdateCoint(cointOnDestroy);
-        VfxManager.Instance.playExplosionFx(transform.position, 10f);
-        Destroy(gameObject);
     }
 }

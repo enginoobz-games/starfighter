@@ -5,6 +5,7 @@ using System.Collections.Generic;
 public class SFB_AudioManager : MonoBehaviour
 {
 
+    [SerializeField] AudioClip idleLoop;
     public List<SFB_AudioClips> audioClips = new List<SFB_AudioClips>();
     public List<SFB_AudioClips> audioLoops = new List<SFB_AudioClips>();
     public bool pitchByTimescale = true;                            // Adjust pitch by timescale?
@@ -50,6 +51,8 @@ public class SFB_AudioManager : MonoBehaviour
         {                                               // If we haven't assigned this...
             animator = GetComponent<Animator>();                    // Cache the component
         }
+
+        StartLoop("Idle");
     }
 
     void Update()
@@ -58,6 +61,12 @@ public class SFB_AudioManager : MonoBehaviour
         if (audioSource.isPlaying)
         {                               // If the source is playing
             UpdateVolume();                                     // Update volume method
+        }
+        else
+        {
+            // audioSource.volume = 0.5f;
+            // audioSource.clip = idleLoop;
+            // audioSource.Play();
         }
     }
 

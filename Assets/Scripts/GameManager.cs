@@ -56,4 +56,9 @@ public class GameManager : MonoBehaviour
         boss.gameObject.SetActive(true);
         boss.Appear(new Vector3(CameraRig.Instance.transform.position.x + boss.appearDistance, 10, -20));
     }
+
+    public void AfterBossDefeat()
+    {
+        CameraRig.Instance.ExitBossArena();
+    }
 }
