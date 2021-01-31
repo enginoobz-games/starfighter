@@ -25,6 +25,7 @@ public class CustomGameManager : MonoBehaviourSingleton<CustomGameManager>
     int coint = 0;
     int travelDistance = 0;
     int bestTravelDistance = 0;
+    bool isPaused = false;
 
     private void Start()
     {
@@ -80,5 +81,19 @@ public class CustomGameManager : MonoBehaviourSingleton<CustomGameManager>
         Time.timeScale = 1f;
         gameOverPanel.SetActive(false);
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
+    public void TogglePause()
+    {
+        if (isPaused)
+        {
+            Time.timeScale = 1;
+            isPaused = false;
+        }
+        else
+        {
+            Time.timeScale = 0;
+            isPaused = true;
+        }
     }
 }
