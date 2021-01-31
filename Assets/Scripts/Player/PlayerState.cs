@@ -116,8 +116,8 @@ public class PlayerState : MonoBehaviour
     private void Die()
     {
         VfxManager.Instance.playExplosionFx(transform.position, 1f);
-        GameManager.Instance.OnGameOver();
-        Destroy(gameObject);
+        CustomGameManager.Instance.OnGameOver();
+        gameObject.SetActive(false);
     }
 
     private void Heal(int amount)

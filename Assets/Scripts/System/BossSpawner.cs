@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BossSpawner : MonoBehaviour
+public class BossSpawner : MonoBehaviourSingleton<BossSpawner>
 {
     [SerializeField] GiantWorm[] bosses;
     int lastSpawnedIndex = -1; // to make sure two adjacent bosses not similar

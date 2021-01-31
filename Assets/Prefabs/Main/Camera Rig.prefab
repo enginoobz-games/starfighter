@@ -808,7 +808,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   immuneDuration: 2
-  maxHealth: 2
+  maxHealth: 1
   label: {fileID: 479573554}
   shieldAura: {fileID: 2586857101160028806}
   damagedShieldAura: {fileID: 2018662445630554398}

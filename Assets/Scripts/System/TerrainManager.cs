@@ -6,7 +6,7 @@ public enum TerrainType
 {
     NORMAL, ARENA
 }
-public class TerrainManager : MonoBehaviour
+public class TerrainManager : MonoBehaviourSingleton<TerrainManager>
 {
     [SerializeField] public float terrainSize = 512;
     [SerializeField] List<GameObject> normalTiles;

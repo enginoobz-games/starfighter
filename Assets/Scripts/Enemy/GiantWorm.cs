@@ -50,7 +50,7 @@ public class GiantWorm : MonoBehaviour
     {
         if (onDieTriggered) return;
 
-        GameManager.Instance.UpdateCoint(cointOnDestroy);
+        CustomGameManager.Instance.UpdateCoint(cointOnDestroy);
 
         for (int i = 0; i < 12; i++)
         {
@@ -97,6 +97,6 @@ public class GiantWorm : MonoBehaviour
         yield return new WaitForSeconds(5f);
         onDieTriggered = false;
         gameObject.SetActive(false);
-        GameManager.Instance.AfterBossDefeat();
+        CustomGameManager.Instance.AfterBossDefeat();
     }
 }

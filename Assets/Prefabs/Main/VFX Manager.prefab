@@ -54,3 +54,5 @@ MonoBehaviour:
   - {fileID: 19812512, guid: 3b154cb7750ef3c42b1e5dc77466bc12, type: 3}
   - {fileID: 19898412, guid: 713398a148e185840a055a02d77722cf, type: 3}
   - {fileID: 19872614, guid: 0347f162c7ebeae4ea35eeec8f638c1b, type: 3}
+  damagingPrefabs:
+  - {fileID: 19832222, guid: 91d7a060cd811bc4887b72e4c35b1bc1, type: 3}

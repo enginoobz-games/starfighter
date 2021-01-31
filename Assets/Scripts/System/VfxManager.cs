@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class VfxManager : MonoBehaviour
+public class VfxManager : MonoBehaviourSingleton<VfxManager>
 {
     [SerializeField] ParticleSystem[] explosionPrefabs;
     [SerializeField] ParticleSystem[] damagingPrefabs;
@@ -11,24 +11,8 @@ public class VfxManager : MonoBehaviour
     List<ParticleSystem> explosions = new List<ParticleSystem>();
     List<ParticleSystem> damagings = new List<ParticleSystem>();
 
-
     int poolSize = 3;
 
-    // singleton pattern
-    private static VfxManager _instance;
-    public static VfxManager Instance { get { return _instance; } }
-    private void Awake()
-    {
-        // if (_instance != null && _instance != this)
-        // {
-        //     Destroy(this.gameObject);
-        // }
-        // else
-        // {
-        //     _instance = this;
-        // }
-        _instance = this;
-    }
     // Start is called before the first frame update
     void Start()
     {
