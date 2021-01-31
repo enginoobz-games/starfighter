@@ -99,7 +99,7 @@ MonoBehaviour:
   hitEffectDuration: 1.01
   shieldLight: {fileID: 2023380822520356495}
   hitMaterial: {fileID: 2100000, guid: dd3ff0d97bfbd49939c5ec10c055908c, type: 2}
-  hitColor: {r: 1, g: 0.3105023, b: 0, a: 1}
+  hitColor: {r: 1, g: 0, b: 0.019607844, a: 1}
   autoHitPatternScale: 1
   renderSides: 0
 --- !u!64 &1693356912307740203
