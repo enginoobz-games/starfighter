@@ -25,14 +25,15 @@ public class CameraRig : MonoBehaviour
     public static CameraRig Instance { get { return _instance; } }
     private void Awake()
     {
-        if (_instance != null && _instance != this)
-        {
-            Destroy(this.gameObject);
-        }
-        else
-        {
-            _instance = this;
-        }
+        // if (_instance != null && _instance != this)
+        // {
+        //     Destroy(this.gameObject);
+        // }
+        // else
+        // {
+        //     _instance = this;
+        // }
+        _instance = this;
     }
 
     void Start()

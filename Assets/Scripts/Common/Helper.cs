@@ -55,4 +55,21 @@ public static class Helper
         }
     }
 
+    /* GAME */
+    public static IEnumerator TimeScaleLerp(float start, float end, float time)     //not in Start or Update
+    {
+        float lastTime = Time.realtimeSinceStartup;
+        float timer = 0.0f;
+
+        while (timer < time)
+        {
+            Time.timeScale = Mathf.Lerp(start, end, timer / time);
+            timer += (Time.realtimeSinceStartup - lastTime);
+            lastTime = Time.realtimeSinceStartup;
+            yield return null;
+        }
+
+        Time.timeScale = end;
+    }
+
 }

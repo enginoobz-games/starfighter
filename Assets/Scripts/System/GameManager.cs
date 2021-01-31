@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using TMPro;
 
 public class GameManager : MonoBehaviour
@@ -10,15 +11,19 @@ public class GameManager : MonoBehaviour
     [SerializeField] ObjectSpawner mineSpawner;
     [SerializeField] BossSpawner bossSpawner;
 
-    [Header("GAME STATUS")]
-    [SerializeField] TextMeshProUGUI cointLabel;
+    [Header("GAME UI")]
+    [SerializeField] TextMeshProUGUI coinLabel;
     [SerializeField] TextMeshProUGUI distanceLabel;
+    [SerializeField] GameObject gameOverPanel;
+    [SerializeField] TextMeshProUGUI distanceGameOverLabel;
+    [SerializeField] TextMeshProUGUI bestDistanceGameOverLabel;
 
     [Header("GAME PLAY")]
     [Tooltip("Boss will appear after this number of tiles since last boss defeat")]
     public int bossOccurrence = 3;
     int coint = 0;
     int travelDistance = 0;
+    int bestTravelDistance = 0;
     // Start is called before the first frame update
 
     // TODO: generic singleton pattern
@@ -27,14 +32,15 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance { get { return _instance; } }
     private void Awake()
     {
-        if (_instance != null && _instance != this)
-        {
-            Destroy(this.gameObject);
-        }
-        else
-        {
-            _instance = this;
-        }
+        // if (_instance != null && _instance != this)
+        // {
+        //     Destroy(this.gameObject);
+        // }
+        // else
+        // {
+        //     _instance = this;
+        // }
+        _instance = this;
     }
 
     private void Start()
@@ -45,7 +51,7 @@ public class GameManager : MonoBehaviour
     public void UpdateCoint(int amount)
     {
         coint += amount;
-        cointLabel.text = "Coints\n" + coint;
+        coinLabel.text = "Coints\n" + coint;
     }
 
     public void UpdateDistance()
@@ -70,6 +76,27 @@ public class GameManager : MonoBehaviour
 
     public void OnGameOver()
     {
-        CameraRig.Instance.moveSpeed = 2f;
+        bestTravelDistance = Mathf.Max(travelDistance, bestTravelDistance);
+        StartCoroutine(Helper.TimeScaleLerp(1f, 0.3f, 4f));
+        StartCoroutine(nameof(ShowGameOverPanel));
+    }
+
+    IEnumerator ShowGameOverPanel()
+    {
+        yield return new WaitForSeconds(1.5f);
+        gameOverPanel.SetActive(true);
+        distanceGameOverLabel.text = "Travel distance: " + travelDistance;
+        bestDistanceGameOverLabel.text = "Best distance: " + bestTravelDistance;
+
+        // reset
+        travelDistance = 0;
+    }
+
+    public void Replay()
+    {
+        gameOverPanel.SetActive(false);
+        Time.timeScale = 1f;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+
     }
 }
