@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using TMPro;
+using Michsky.UI.ModernUIPack;
 
 // TODO: make GameMananger persistent & remains references
 public class CustomGameManager : MonoBehaviourSingleton<CustomGameManager>
