@@ -7,6 +7,7 @@ public class Enemy : MonoBehaviour
     // behavior: when player reachs this distance away from enemy, enemy is triggered and start following player for a duration then stops
     [SerializeField] Vector2 triggerDistanceRange = new Vector2(40f, 60f);
     [SerializeField] Vector2 followDurationRange = new Vector2(5f, 10f);
+    [SerializeField] bool seriesExplosions = false; // for show case
 
     float triggerDistance; //= 50f;
     float followDuration; // = 10f;
@@ -56,5 +57,13 @@ public class Enemy : MonoBehaviour
         CustomGameManager.Instance.UpdateCoint(cointOnDestroy);
         VfxManager.Instance.playExplosionFx(transform.position, 10f);
         Destroy(gameObject);
+
+        if (seriesExplosions)
+        {
+            for (int i = 0; i < 10; i++)
+            {
+                VfxManager.Instance.playExplosionFx(new Vector3(transform.position.x + Random.Range(-1, 1), transform.position.y + Random.Range(-1, 1), transform.position.z + Random.Range(-1, 1)), 1f);
+            }
+        }
     }
 }

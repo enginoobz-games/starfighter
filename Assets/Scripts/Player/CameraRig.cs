@@ -27,7 +27,7 @@ public class CameraRig : MonoBehaviourSingleton<CameraRig>
 
     public void Reset()
     {
-        transform.position = new Vector3(0, 70, 0);
+        // transform.position = new Vector3(0, 70, 0);
         moveSpeed = terrainSize / timeTravelPerTile;
         maxSpeed = terrainSize / minTimeTravelPerTile;
         nextBossCoord = CustomGameManager.Instance.bossOccurrence;

@@ -12,7 +12,13 @@ public class ProjectileShooter : MonoBehaviour
 
     public List<GameObject> VFXs = new List<GameObject>();
 
+    [Tooltip("Position of this gun in slot (left: negative, middle: 0, right: positive")]
+    [SerializeField] int position = 0; // left -> right gun: ..., -2, -1, 0 (middle), 1, 2, ...
+    [Tooltip("Angle offset between 2 adjancent shooters")]
+    [SerializeField] float angleOffset = 20f;
+
     // to configure direction of bullets, angleOffset.y = - Camera.tranform.rotation.y
+    // [Tooltip("Change direction of bullets")]
     Vector3 rotateOffset = new Vector3(-10, 90, 0);
     private int count = 0;
     private float timeToFire = 0f;
@@ -82,7 +88,7 @@ public class ProjectileShooter : MonoBehaviour
         // xPlayer: -15 -> 15
         // xOffset: -25 -> 0
         float yRotatePlayer = Helper.WrapAngle(transform.parent.transform.localRotation.eulerAngles.y);
-        rotateOffset.y = Helper.Remap(yRotatePlayer, -30, 30, 70, 110);
+        rotateOffset.y = Helper.Remap(yRotatePlayer, -30, 30, 70, 110) + angleOffset * position;
         float xRotatePlayer = Helper.WrapAngle(transform.parent.transform.localRotation.eulerAngles.x);
         rotateOffset.x = Helper.Remap(xRotatePlayer, -15, 15, -20, 0);
     }
