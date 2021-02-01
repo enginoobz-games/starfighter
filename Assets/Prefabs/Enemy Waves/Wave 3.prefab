@@ -1,20 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &6036798732529946917
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6035452559969010401}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 33ec7359e19c7a8428d56cea6c0df01e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  triggerDistanceRange: {x: 30, y: 45}
-  followDurationRange: {x: 5, y: 10}
-  seriesExplosions: 1
 --- !u!114 &6036798732529946916
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -29,6 +14,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 10
   cointOnDestroy: 30
+--- !u!114 &6036798732529946917
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6035452559969010401}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33ec7359e19c7a8428d56cea6c0df01e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  triggerDistanceRange: {x: 35, y: 35}
+  followDurationRange: {x: 5, y: 10}
+  seriesExplosions: 1
 --- !u!114 &6036798733402904748
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -41,7 +41,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33ec7359e19c7a8428d56cea6c0df01e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  triggerDistanceRange: {x: 30, y: 45}
+  triggerDistanceRange: {x: 35, y: 35}
   followDurationRange: {x: 5, y: 10}
   seriesExplosions: 0
 --- !u!114 &6036798733402904751
@@ -155,8 +155,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6627727680300246712, guid: e348aab2835bcf44885144a86a08540a,
         type: 3}
+      propertyPath: triggerDistanceRange.x
+      value: 35
+      objectReference: {fileID: 0}
+    - target: {fileID: 6627727680300246712, guid: e348aab2835bcf44885144a86a08540a,
+        type: 3}
       propertyPath: triggerDistanceRange.y
-      value: 45
+      value: 35
       objectReference: {fileID: 0}
     - target: {fileID: 6629108861810241936, guid: e348aab2835bcf44885144a86a08540a,
         type: 3}

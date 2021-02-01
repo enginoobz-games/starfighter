@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2141650429967188178}
   m_Layer: 0
-  m_Name: Wave 1
+  m_Name: Wave 1 - 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -109,7 +109,7 @@ PrefabInstance:
     - target: {fileID: 599525612906722743, guid: d41129c733ceba34cb9e558a3e063149,
         type: 3}
       propertyPath: triggerDistanceRange.y
-      value: 45
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 601174795194764055, guid: d41129c733ceba34cb9e558a3e063149,
         type: 3}
@@ -199,7 +199,7 @@ PrefabInstance:
     - target: {fileID: 599525612906722743, guid: d41129c733ceba34cb9e558a3e063149,
         type: 3}
       propertyPath: triggerDistanceRange.y
-      value: 45
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 601174795194764055, guid: d41129c733ceba34cb9e558a3e063149,
         type: 3}
@@ -289,7 +289,7 @@ PrefabInstance:
     - target: {fileID: 599525612906722743, guid: d41129c733ceba34cb9e558a3e063149,
         type: 3}
       propertyPath: triggerDistanceRange.y
-      value: 45
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 601174795194764055, guid: d41129c733ceba34cb9e558a3e063149,
         type: 3}
@@ -379,7 +379,7 @@ PrefabInstance:
     - target: {fileID: 599525612906722743, guid: d41129c733ceba34cb9e558a3e063149,
         type: 3}
       propertyPath: triggerDistanceRange.y
-      value: 45
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 601174795194764055, guid: d41129c733ceba34cb9e558a3e063149,
         type: 3}

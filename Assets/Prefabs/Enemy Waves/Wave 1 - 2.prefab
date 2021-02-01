@@ -108,12 +108,12 @@ PrefabInstance:
     - target: {fileID: 599525612906722743, guid: d41129c733ceba34cb9e558a3e063149,
         type: 3}
       propertyPath: triggerDistanceRange.x
-      value: 30
+      value: 35
       objectReference: {fileID: 0}
     - target: {fileID: 599525612906722743, guid: d41129c733ceba34cb9e558a3e063149,
         type: 3}
       propertyPath: triggerDistanceRange.y
-      value: 45
+      value: 35
       objectReference: {fileID: 0}
     - target: {fileID: 601174795194764055, guid: d41129c733ceba34cb9e558a3e063149,
         type: 3}
@@ -198,12 +198,12 @@ PrefabInstance:
     - target: {fileID: 599525612906722743, guid: d41129c733ceba34cb9e558a3e063149,
         type: 3}
       propertyPath: triggerDistanceRange.x
-      value: 30
+      value: 35
       objectReference: {fileID: 0}
     - target: {fileID: 599525612906722743, guid: d41129c733ceba34cb9e558a3e063149,
         type: 3}
       propertyPath: triggerDistanceRange.y
-      value: 45
+      value: 35
       objectReference: {fileID: 0}
     - target: {fileID: 601174795194764055, guid: d41129c733ceba34cb9e558a3e063149,
         type: 3}
@@ -288,12 +288,12 @@ PrefabInstance:
     - target: {fileID: 599525612906722743, guid: d41129c733ceba34cb9e558a3e063149,
         type: 3}
       propertyPath: triggerDistanceRange.x
-      value: 30
+      value: 35
       objectReference: {fileID: 0}
     - target: {fileID: 599525612906722743, guid: d41129c733ceba34cb9e558a3e063149,
         type: 3}
       propertyPath: triggerDistanceRange.y
-      value: 45
+      value: 35
       objectReference: {fileID: 0}
     - target: {fileID: 601174795194764055, guid: d41129c733ceba34cb9e558a3e063149,
         type: 3}
@@ -378,12 +378,12 @@ PrefabInstance:
     - target: {fileID: 599525612906722743, guid: d41129c733ceba34cb9e558a3e063149,
         type: 3}
       propertyPath: triggerDistanceRange.x
-      value: 30
+      value: 35
       objectReference: {fileID: 0}
     - target: {fileID: 599525612906722743, guid: d41129c733ceba34cb9e558a3e063149,
         type: 3}
       propertyPath: triggerDistanceRange.y
-      value: 45
+      value: 35
       objectReference: {fileID: 0}
     - target: {fileID: 601174795194764055, guid: d41129c733ceba34cb9e558a3e063149,
         type: 3}
@@ -468,12 +468,12 @@ PrefabInstance:
     - target: {fileID: 599525612906722743, guid: d41129c733ceba34cb9e558a3e063149,
         type: 3}
       propertyPath: triggerDistanceRange.x
-      value: 30
+      value: 35
       objectReference: {fileID: 0}
     - target: {fileID: 599525612906722743, guid: d41129c733ceba34cb9e558a3e063149,
         type: 3}
       propertyPath: triggerDistanceRange.y
-      value: 45
+      value: 35
       objectReference: {fileID: 0}
     - target: {fileID: 601174795194764055, guid: d41129c733ceba34cb9e558a3e063149,
         type: 3}
@@ -558,12 +558,12 @@ PrefabInstance:
     - target: {fileID: 599525612906722743, guid: d41129c733ceba34cb9e558a3e063149,
         type: 3}
       propertyPath: triggerDistanceRange.x
-      value: 30
+      value: 35
       objectReference: {fileID: 0}
     - target: {fileID: 599525612906722743, guid: d41129c733ceba34cb9e558a3e063149,
         type: 3}
       propertyPath: triggerDistanceRange.y
-      value: 45
+      value: 35
       objectReference: {fileID: 0}
     - target: {fileID: 601174795194764055, guid: d41129c733ceba34cb9e558a3e063149,
         type: 3}
@@ -648,12 +648,12 @@ PrefabInstance:
     - target: {fileID: 599525612906722743, guid: d41129c733ceba34cb9e558a3e063149,
         type: 3}
       propertyPath: triggerDistanceRange.x
-      value: 30
+      value: 35
       objectReference: {fileID: 0}
     - target: {fileID: 599525612906722743, guid: d41129c733ceba34cb9e558a3e063149,
         type: 3}
       propertyPath: triggerDistanceRange.y
-      value: 45
+      value: 35
       objectReference: {fileID: 0}
     - target: {fileID: 601174795194764055, guid: d41129c733ceba34cb9e558a3e063149,
         type: 3}
@@ -738,12 +738,12 @@ PrefabInstance:
     - target: {fileID: 599525612906722743, guid: d41129c733ceba34cb9e558a3e063149,
         type: 3}
       propertyPath: triggerDistanceRange.x
-      value: 30
+      value: 35
       objectReference: {fileID: 0}
     - target: {fileID: 599525612906722743, guid: d41129c733ceba34cb9e558a3e063149,
         type: 3}
       propertyPath: triggerDistanceRange.y
-      value: 45
+      value: 35
       objectReference: {fileID: 0}
     - target: {fileID: 601174795194764055, guid: d41129c733ceba34cb9e558a3e063149,
         type: 3}
